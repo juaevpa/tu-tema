@@ -1,0 +1,399 @@
+{
+    "key": "group_xativa_cycling",
+    "title": "Configuración Xàtiva Cycling",
+    "fields": [
+        {
+            "key": "field_hero_settings",
+            "label": "Configuración del Hero",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_hero_image",
+            "label": "Imagen Hero",
+            "name": "hero_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Selecciona la imagen principal para la página de inicio",
+            "required": 1,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": 0,
+            "min_height": 0,
+            "min_size": 0,
+            "max_width": 0,
+            "max_height": 0,
+            "max_size": 0,
+            "mime_types": ""
+        },
+        {
+            "key": "field_hero_title",
+            "label": "Título Hero",
+            "name": "hero_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Ingresa el título principal",
+            "required": 1,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Descubre Xàtiva en Bicicleta",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_hero_subtitle",
+            "label": "Subtítulo Hero",
+            "name": "hero_subtitle",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Ingresa el subtítulo",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Explora las mejores rutas ciclistas de la región",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_route_settings",
+            "label": "Configuración de Rutas",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_route_distance",
+            "label": "Distancia",
+            "name": "distance",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Distancia de la ruta en kilómetros",
+            "required": 1,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": 0,
+            "step": "0.1",
+            "default_value": "",
+            "max": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_route_difficulty",
+            "label": "Dificultad",
+            "name": "difficulty",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Selecciona el nivel de dificultad de la ruta",
+            "required": 1,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "easy": "Fácil",
+                "medium": "Media",
+                "hard": "Difícil",
+                "expert": "Experto"
+            },
+            "default_value": "medium",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "return_format": "value"
+        },
+        {
+            "key": "field_route_featured",
+            "label": "Ruta Destacada",
+            "name": "featured",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Marcar si esta ruta debe aparecer en la página principal",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Mostrar en página principal",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_route_gpx",
+            "label": "Archivo GPX",
+            "name": "gpx_file",
+            "aria-label": "",
+            "type": "file",
+            "instructions": "Sube el archivo GPX de la ruta",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "mime_types": "gpx",
+            "library": "all",
+            "min_size": 0,
+            "max_size": 0
+        },
+        {
+            "key": "field_route_map",
+            "label": "Mapa Embebido",
+            "name": "map_embed",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Pega aquí el código iframe del mapa (Google Maps, Wikiloc, etc.)",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "rows": 4,
+            "default_value": "",
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_place_settings",
+            "label": "Configuración de Lugares",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_place_address",
+            "label": "Dirección",
+            "name": "address",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Dirección del lugar",
+            "required": 1,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_place_hours",
+            "label": "Horario",
+            "name": "opening_hours",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Horario de apertura",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": 0,
+            "max": 7,
+            "layout": "table",
+            "rows_per_page": 20,
+            "button_label": "Agregar Fila",
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_place_day",
+                    "label": "Día",
+                    "name": "day",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "monday": "Lunes",
+                        "tuesday": "Martes",
+                        "wednesday": "Miércoles",
+                        "thursday": "Jueves",
+                        "friday": "Viernes",
+                        "saturday": "Sábado",
+                        "sunday": "Domingo"
+                    },
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "default_value": false,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "return_format": "value",
+                    "parent_repeater": "field_place_hours"
+                },
+                {
+                    "key": "field_place_hours_open",
+                    "label": "Hora apertura",
+                    "name": "open",
+                    "aria-label": "",
+                    "type": "time_picker",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_format": "g:i a",
+                    "return_format": "g:i a",
+                    "parent_repeater": "field_place_hours"
+                },
+                {
+                    "key": "field_place_hours_close",
+                    "label": "Hora cierre",
+                    "name": "close",
+                    "aria-label": "",
+                    "type": "time_picker",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_format": "g:i a",
+                    "return_format": "g:i a",
+                    "parent_repeater": "field_place_hours"
+                }
+            ]
+        },
+        {
+            "key": "field_place_featured",
+            "label": "Lugar Destacado",
+            "name": "featured",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Marcar si este lugar debe aparecer en la página principal",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Mostrar en página principal",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "theme-general-settings"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "xativa_route"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "xativa_place"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1734021719
+}

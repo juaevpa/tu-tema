@@ -1,0 +1,42 @@
+/*
+Theme Name: Xàtiva Cycling
+Theme URI: https://cyclingxativa.com
+Author: Tu Nombre
+Author URI: https://tuwebsite.com
+Description: Tema personalizado para Cycling Xàtiva
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: tu-tema
+*/
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.pagination .page-numbers {
+  display: flex;
+  width: 2.5rem;
+  height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  line-height: normal;
+  color: #0e141b;
+  border-radius: 9999px;
+}
+
+.pagination .current {
+  font-weight: 700;
+  background-color: #e7edf3;
+}
+
+.pagination .prev,
+.pagination .next {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
