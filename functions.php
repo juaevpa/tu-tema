@@ -121,6 +121,113 @@ function register_xativa_taxonomies() {
     ));
 }
 
+// Registrar taxonomías para rutas
+function register_route_taxonomies() {
+    // Dificultad
+    register_taxonomy('route_difficulty', 'xativa_route', array(
+        'hierarchical'      => true,
+        'labels'           => array(
+            'name'              => _x('Dificultades', 'taxonomy general name', 'tu-tema'),
+            'singular_name'     => _x('Dificultad', 'taxonomy singular name', 'tu-tema'),
+            'search_items'      => __('Buscar Dificultades', 'tu-tema'),
+            'all_items'         => __('Todas las Dificultades', 'tu-tema'),
+            'parent_item'       => __('Dificultad Padre', 'tu-tema'),
+            'parent_item_colon' => __('Dificultad Padre:', 'tu-tema'),
+            'edit_item'         => __('Editar Dificultad', 'tu-tema'),
+            'update_item'       => __('Actualizar Dificultad', 'tu-tema'),
+            'add_new_item'      => __('Añadir Nueva Dificultad', 'tu-tema'),
+            'new_item_name'     => __('Nueva Dificultad', 'tu-tema'),
+            'menu_name'         => __('Dificultad', 'tu-tema'),
+        ),
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'           => array('slug' => 'dificultad'),
+        'show_in_rest'      => true,
+    ));
+
+    // Tipo de ruta
+    register_taxonomy('route_type', 'xativa_route', array(
+        'hierarchical'      => true,
+        'labels'           => array(
+            'name'              => _x('Tipos de Ruta', 'taxonomy general name', 'tu-tema'),
+            'singular_name'     => _x('Tipo de Ruta', 'taxonomy singular name', 'tu-tema'),
+            'search_items'      => __('Buscar Tipos', 'tu-tema'),
+            'all_items'         => __('Todos los Tipos', 'tu-tema'),
+            'parent_item'       => __('Tipo Padre', 'tu-tema'),
+            'parent_item_colon' => __('Tipo Padre:', 'tu-tema'),
+            'edit_item'         => __('Editar Tipo', 'tu-tema'),
+            'update_item'       => __('Actualizar Tipo', 'tu-tema'),
+            'add_new_item'      => __('Añadir Nuevo Tipo', 'tu-tema'),
+            'new_item_name'     => __('Nuevo Tipo', 'tu-tema'),
+            'menu_name'         => __('Tipo de Ruta', 'tu-tema'),
+        ),
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'           => array('slug' => 'tipo'),
+        'show_in_rest'      => true,
+    ));
+
+    // Paisaje
+    register_taxonomy('route_scenery', 'xativa_route', array(
+        'hierarchical'      => true,
+        'labels'           => array(
+            'name'              => _x('Paisajes', 'taxonomy general name', 'tu-tema'),
+            'singular_name'     => _x('Paisaje', 'taxonomy singular name', 'tu-tema'),
+            'search_items'      => __('Buscar Paisajes', 'tu-tema'),
+            'all_items'         => __('Todos los Paisajes', 'tu-tema'),
+            'parent_item'       => __('Paisaje Padre', 'tu-tema'),
+            'parent_item_colon' => __('Paisaje Padre:', 'tu-tema'),
+            'edit_item'         => __('Editar Paisaje', 'tu-tema'),
+            'update_item'       => __('Actualizar Paisaje', 'tu-tema'),
+            'add_new_item'      => __('Añadir Nuevo Paisaje', 'tu-tema'),
+            'new_item_name'     => __('Nuevo Paisaje', 'tu-tema'),
+            'menu_name'         => __('Paisaje', 'tu-tema'),
+        ),
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'           => array('slug' => 'paisaje'),
+        'show_in_rest'      => true,
+    ));
+
+    // Crear términos por defecto
+    $default_terms = array(
+        'route_difficulty' => array(
+            'facil' => 'Fácil',
+            'moderada' => 'Moderada',
+            'dificil' => 'Difícil',
+            'muy-dificil' => 'Muy Difícil'
+        ),
+        'route_type' => array(
+            'montana' => 'Montaña',
+            'carretera' => 'Carretera',
+            'mixta' => 'Mixta',
+            'gravel' => 'Gravel'
+        ),
+        'route_scenery' => array(
+            'montanoso' => 'Montañoso',
+            'urbano' => 'Urbano',
+            'rural' => 'Rural',
+            'bosque' => 'Bosque',
+            'rio' => 'Río'
+        )
+    );
+
+    // Insertar los términos
+    foreach ($default_terms as $taxonomy => $terms) {
+        foreach ($terms as $slug => $name) {
+            if (!term_exists($slug, $taxonomy)) {
+                wp_insert_term($name, $taxonomy, array('slug' => $slug));
+            }
+        }
+    }
+}
+
+// Registrar las taxonomías en init con prioridad 0 (antes que otros hooks de init)
+add_action('init', 'register_route_taxonomies', 0);
+
 // Registrar los post types y taxonomías
 add_action('init', 'register_xativa_route_post_type');
 add_action('init', 'register_xativa_place_post_type');
@@ -152,3 +259,127 @@ add_theme_support('html5', array(
 add_theme_support('wp-block-styles');
 add_theme_support('responsive-embeds');
 add_theme_support('align-wide'); 
+
+// Cargar scripts y estilos
+function tu_tema_scripts() {
+    // Solo cargar el script en el archivo de rutas
+    if (is_post_type_archive('xativa_route')) {
+        wp_enqueue_script('tu-tema-routes', get_template_directory_uri() . '/assets/js/routes.js', array(), '1.0', true);
+    }
+}
+add_action('wp_enqueue_scripts', 'tu_tema_scripts');
+
+// Crear términos por defecto para las taxonomías
+function create_default_terms() {
+    // Términos para Dificultad
+    $difficulty_terms = array(
+        'facil' => array(
+            'name' => 'Fácil',
+            'description' => 'Rutas sin dificultad técnica significativa'
+        ),
+        'moderada' => array(
+            'name' => 'Moderada',
+            'description' => 'Rutas con alguna dificultad técnica'
+        ),
+        'dificil' => array(
+            'name' => 'Difícil',
+            'description' => 'Rutas con dificultad técnica considerable'
+        ),
+        'muy-dificil' => array(
+            'name' => 'Muy Difícil',
+            'description' => 'Rutas con alta dificultad técnica'
+        )
+    );
+
+    // Términos para Tipo de Ruta
+    $type_terms = array(
+        'montana' => array(
+            'name' => 'Montaña',
+            'description' => 'Rutas por terreno montañoso'
+        ),
+        'carretera' => array(
+            'name' => 'Carretera',
+            'description' => 'Rutas por carretera asfaltada'
+        ),
+        'mixta' => array(
+            'name' => 'Mixta',
+            'description' => 'Combinación de diferentes tipos de terreno'
+        ),
+        'gravel' => array(
+            'name' => 'Gravel',
+            'description' => 'Rutas por caminos de grava y tierra compactada'
+        )
+    );
+
+    // Términos para Paisaje
+    $scenery_terms = array(
+        'montanoso' => array(
+            'name' => 'Montañoso',
+            'description' => 'Paisajes de montaña y sierra'
+        ),
+        'urbano' => array(
+            'name' => 'Urbano',
+            'description' => 'Rutas por zonas urbanas'
+        ),
+        'rural' => array(
+            'name' => 'Rural',
+            'description' => 'Paisajes rurales y agrícolas'
+        ),
+        'bosque' => array(
+            'name' => 'Bosque',
+            'description' => 'Rutas a través de zonas boscosas'
+        ),
+        'rio' => array(
+            'name' => 'Río',
+            'description' => 'Rutas cercanas a ríos'
+        )
+    );
+
+    // Crear términos para cada taxonomía
+    foreach ($difficulty_terms as $slug => $term) {
+        if (!term_exists($slug, 'route_difficulty')) {
+            wp_insert_term(
+                $term['name'],
+                'route_difficulty',
+                array(
+                    'slug' => $slug,
+                    'description' => $term['description']
+                )
+            );
+        }
+    }
+
+    foreach ($type_terms as $slug => $term) {
+        if (!term_exists($slug, 'route_type')) {
+            wp_insert_term(
+                $term['name'],
+                'route_type',
+                array(
+                    'slug' => $slug,
+                    'description' => $term['description']
+                )
+            );
+        }
+    }
+
+    foreach ($scenery_terms as $slug => $term) {
+        if (!term_exists($slug, 'route_scenery')) {
+            wp_insert_term(
+                $term['name'],
+                'route_scenery',
+                array(
+                    'slug' => $slug,
+                    'description' => $term['description']
+                )
+            );
+        }
+    }
+}
+
+// Ejecutar la creación de términos cuando se active el tema
+add_action('after_switch_theme', 'create_default_terms');
+
+// También ejecutar la creación de términos cuando se registren las taxonomías
+// (esto es útil durante el desarrollo)
+add_action('init', 'create_default_terms', 20);
+  

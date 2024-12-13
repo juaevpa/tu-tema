@@ -1,75 +1,147 @@
-<?php
-get_header();
+<?php get_header(); ?>
 
-// Obtener rutas destacadas
-$featured_routes = new WP_Query([
-    'post_type' => 'xativa_route',
-    'posts_per_page' => 3,
-    'meta_query' => [
-        [
-            'key' => 'featured',
-            'value' => '1',
-            'compare' => '=',
-        ],
-    ],
-]);
+<div class="px-40 flex flex-1 justify-center py-5">
+    <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+        <div class="@container">
+            <div class="@[480px]:p-4">
+                <div class="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-xl items-start justify-end px-4 pb-10 @[480px]:px-10"
+                    style='background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%), url("https://cdn.usegalileo.ai/sdxl10/c5224f2a-2c7f-45e9-a794-944d15e6a3c4.png");'>
+                    <div class="flex flex-col gap-2 text-left">
+                        <h1 class="text-white text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]">
+                            Cycling in Xàtiva
+                        </h1>
+                        <h2 class="text-white text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal">
+                            Explore the region's history, gastronomy, and nature while cycling.
+                        </h2>
+                    </div>
+                    <label class="flex flex-col min-w-40 h-14 w-full max-w-[480px] @[480px]:h-16">
+                        <div class="flex w-full flex-1 items-stretch rounded-xl h-full">
+                            <div class="text-[#4e7097] flex border border-[#d0dbe7] bg-slate-50 items-center justify-center pl-[15px] rounded-l-xl border-r-0"
+                                data-icon="MagnifyingGlass" data-size="20px" data-weight="regular">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor"
+                                    viewBox="0 0 256 256">
+                                    <path
+                                        d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <input placeholder="Search for routes, places, and more"
+                                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#0e141b] focus:outline-0 focus:ring-0 border border-[#d0dbe7] bg-slate-50 focus:border-[#d0dbe7] h-full placeholder:text-[#4e7097] px-[15px] rounded-r-none border-r-0 pr-2 rounded-l-none border-l-0 pl-2 text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal"
+                                value="" />
+                            <div
+                                class="flex items-center justify-center rounded-r-xl border-l-0 border border-[#d0dbe7] bg-slate-50 pr-[7px]">
+                                <button
+                                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#1979e6] text-slate-50 text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]">
+                                    <span class="truncate">Search</span>
+                                </button>
+                            </div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
 
-// Obtener secciones de exploración
-$explore_sections = [
-    'history' => get_posts(['post_type' => 'xativa_history', 'posts_per_page' => 1]),
-    'gastronomy' => get_posts(['post_type' => 'xativa_gastronomy', 'posts_per_page' => 1]),
-];
+        <h2 class="text-[#0e141b] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Featured routes</h2>
+        <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
+            <?php
+            $featured_routes = new WP_Query(array(
+                'post_type' => 'xativa_route',
+                'posts_per_page' => 3,
+                'meta_query' => array(
+                    array(
+                        'key' => 'featured',
+                        'value' => '1',
+                        'compare' => '='
+                    )
+                )
+            ));
 
-// Obtener configuración de la página de inicio
-$hero_image = get_field('hero_image', 'option');
-$hero_title = get_field('hero_title', 'option');
-$hero_subtitle = get_field('hero_subtitle', 'option');
-?>
+            if ($featured_routes->have_posts()) :
+                while ($featured_routes->have_posts()) : $featured_routes->the_post();
+                    $distance = get_field('distance');
+                    $permalink = get_permalink();
+            ?>
+                    <a href="<?php echo esc_url($permalink); ?>" class="group flex flex-col gap-3 pb-3 hover:opacity-90 transition-opacity">
+                        <?php if (has_post_thumbnail()) : ?>
+                            <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl group-hover:shadow-md transition-shadow"
+                                style="background-image: url('<?php echo get_the_post_thumbnail_url(get_the_ID(), 'medium'); ?>');">
+                            </div>
+                        <?php endif; ?>
+                        <div>
+                            <p class="text-[#0e141b] text-base font-medium leading-normal group-hover:text-[#1979e6] transition-colors"><?php the_title(); ?></p>
+                            <?php if ($distance) : ?>
+                                <p class="text-[#4e7097] text-sm font-normal leading-normal"><?php echo esc_html($distance); ?> km</p>
+                            <?php endif; ?>
+                        </div>
+                    </a>
+            <?php
+                endwhile;
+                wp_reset_postdata();
+            else :
+            ?>
+                <div class="col-span-3 text-center py-4 text-[#4e7097]">
+                    <?php _e('No featured routes found.', 'tu-tema'); ?>
+                </div>
+            <?php endif; ?>
+        </div>
 
-<div class="layout-content-container flex flex-col max-w-[960px] flex-1">
-    <!-- Hero Section -->
-    <div class="@container">
-        <div class="@[480px]:p-4">
-            <div class="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-xl items-start justify-end px-4 pb-10 @[480px]:px-10"
-                style="background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%), url('<?php echo esc_url($hero_image['url']); ?>');">
-                <div class="flex flex-col gap-2 text-left">
-                    <h1 class="text-white text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]">
-                        <?php echo esc_html($hero_title); ?>
+        <h2 class="text-[#0e141b] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Explore Xàtiva</h2>
+        <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
+            <?php
+            $explore_items = array(
+                array(
+                    'title' => 'History',
+                    'description' => "Xàtiva's history dates back to the Iberians",
+                    'image' => 'https://cdn.usegalileo.ai/stability/14202a2a-93f1-463c-a475-1f5bb503be21.png'
+                ),
+                array(
+                    'title' => 'Gastronomy',
+                    'description' => 'Xàtiva is home to the Bodegas Xúquer winery',
+                    'image' => 'https://cdn.usegalileo.ai/sdxl10/010fd675-76ca-4a1d-97f1-82c5036aa0e2.png'
+                ),
+                array(
+                    'title' => 'Nature',
+                    'description' => 'Xàtiva is surrounded by the Sierra de Enguera mountain range',
+                    'image' => 'https://cdn.usegalileo.ai/stability/ee6e00db-6fb2-4446-b3ff-a0fefc1dac07.png'
+                ),
+                array(
+                    'title' => 'Culture',
+                    'description' => "Xàtiva is home to the L'Almodí, a gothic civil building",
+                    'image' => 'https://cdn.usegalileo.ai/sdxl10/7c22d11a-5603-43c1-bbd0-f4ca24ce3afc.png'
+                )
+            );
+
+            foreach ($explore_items as $item) :
+            ?>
+                <div class="flex flex-col gap-3 pb-3">
+                    <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
+                        style='background-image: url("<?php echo esc_url($item['image']); ?>");'></div>
+                    <div>
+                        <p class="text-[#0e141b] text-base font-medium leading-normal"><?php echo esc_html($item['title']); ?></p>
+                        <p class="text-[#4e7097] text-sm font-normal leading-normal"><?php echo esc_html($item['description']); ?></p>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+
+        <div class="@container">
+            <div class="flex flex-col justify-end gap-6 px-4 py-10 @[480px]:gap-8 @[480px]:px-10 @[480px]:py-20">
+                <div class="flex flex-col gap-2 text-center">
+                    <h1 class="text-[#0e141b] tracking-light text-[32px] font-bold leading-tight @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em] max-w-[720px]">
+                        Don't know where to start?
                     </h1>
-                    <h2 class="text-white text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal">
-                        <?php echo esc_html($hero_subtitle); ?>
-                    </h2>
+                </div>
+                <div class="flex flex-1 justify-center">
+                    <div class="flex justify-center">
+                        <button
+                            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#1979e6] text-slate-50 text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em] grow">
+                            <span class="truncate">Ask a local</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Featured Routes -->
-    <?php if ($featured_routes->have_posts()): ?>
-        <h2 class="text-[#0e141b] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">
-            Rutas destacadas
-        </h2>
-        <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
-            <?php while ($featured_routes->have_posts()): $featured_routes->the_post(); ?>
-                <div class="flex flex-col gap-3 pb-3">
-                    <?php 
-                    $thumbnail = get_the_post_thumbnail_url(get_the_ID(), 'large');
-                    $distance = get_field('distance');
-                    ?>
-                    <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
-                         style="background-image: url('<?php echo esc_url($thumbnail); ?>');">
-                    </div>
-                    <div>
-                        <p class="text-[#0e141b] text-base font-medium leading-normal"><?php the_title(); ?></p>
-                        <p class="text-[#4e7097] text-sm font-normal leading-normal"><?php echo esc_html($distance); ?> km</p>
-                    </div>
-                </div>
-            <?php endwhile; wp_reset_postdata(); ?>
-        </div>
-    <?php endif; ?>
-
-    <!-- Explore Section -->
-    <!-- Código para la sección de exploración -->
 </div>
 
 <?php get_footer(); ?> 
