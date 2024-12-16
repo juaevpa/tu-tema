@@ -16,14 +16,8 @@
                     </div>
                     <label class="flex flex-col min-w-40 h-14 w-full max-w-[480px] @[480px]:h-16">
                         <div class="flex w-full flex-1 items-stretch rounded-xl h-full">
-                            <div class="text-[#4e7097] flex border border-[#d0dbe7] bg-slate-50 items-center justify-center pl-[15px] rounded-l-xl border-r-0"
-                                data-icon="MagnifyingGlass" data-size="20px" data-weight="regular">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor"
-                                    viewBox="0 0 256 256">
-                                    <path
-                                        d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z">
-                                    </path>
-                                </svg>
+                            <div class="text-[#4e7097] flex border border-[#d0dbe7] bg-slate-50 items-center justify-center pl-[15px] rounded-l-xl border-r-0">
+                                <i class="ph ph-magnifying-glass text-xl"></i>
                             </div>
                             <input placeholder="Search for routes, places, and more"
                                 class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#0e141b] focus:outline-0 focus:ring-0 border border-[#d0dbe7] bg-slate-50 focus:border-[#d0dbe7] h-full placeholder:text-[#4e7097] px-[15px] rounded-r-none border-r-0 pr-2 rounded-l-none border-l-0 pl-2 text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal"
@@ -88,40 +82,53 @@
         <h2 class="text-[#0e141b] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Explore Xàtiva</h2>
         <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
             <?php
-            $explore_items = array(
-                array(
-                    'title' => 'History',
-                    'description' => "Xàtiva's history dates back to the Iberians",
-                    'image' => 'https://cdn.usegalileo.ai/stability/14202a2a-93f1-463c-a475-1f5bb503be21.png'
-                ),
-                array(
-                    'title' => 'Gastronomy',
-                    'description' => 'Xàtiva is home to the Bodegas Xúquer winery',
-                    'image' => 'https://cdn.usegalileo.ai/sdxl10/010fd675-76ca-4a1d-97f1-82c5036aa0e2.png'
-                ),
-                array(
-                    'title' => 'Nature',
-                    'description' => 'Xàtiva is surrounded by the Sierra de Enguera mountain range',
-                    'image' => 'https://cdn.usegalileo.ai/stability/ee6e00db-6fb2-4446-b3ff-a0fefc1dac07.png'
-                ),
-                array(
-                    'title' => 'Culture',
-                    'description' => "Xàtiva is home to the L'Almodí, a gothic civil building",
-                    'image' => 'https://cdn.usegalileo.ai/sdxl10/7c22d11a-5603-43c1-bbd0-f4ca24ce3afc.png'
-                )
-            );
+            // Obtener las categorías
+            $explore_categories = get_terms(array(
+                'taxonomy' => 'explore_category',
+                'hide_empty' => false
+            ));
 
-            foreach ($explore_items as $item) :
+            if (!is_wp_error($explore_categories) && !empty($explore_categories)) :
+                foreach ($explore_categories as $category) :
+                    // Obtener el último elemento de esta categoría
+                    $explore_query = new WP_Query(array(
+                        'post_type' => 'xativa_explore',
+                        'posts_per_page' => 1,
+                        'tax_query' => array(
+                            array(
+                                'taxonomy' => 'explore_category',
+                                'field' => 'term_id',
+                                'terms' => $category->term_id
+                            )
+                        )
+                    ));
+
+                    // URL de la categoría
+                    $category_url = get_term_link($category);
             ?>
-                <div class="flex flex-col gap-3 pb-3">
-                    <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
-                        style='background-image: url("<?php echo esc_url($item['image']); ?>");'></div>
-                    <div>
-                        <p class="text-[#0e141b] text-base font-medium leading-normal"><?php echo esc_html($item['title']); ?></p>
-                        <p class="text-[#4e7097] text-sm font-normal leading-normal"><?php echo esc_html($item['description']); ?></p>
-                    </div>
-                </div>
-            <?php endforeach; ?>
+                    <a href="<?php echo esc_url($category_url); ?>" class="group flex flex-col gap-3 pb-3 hover:opacity-90 transition-opacity">
+                        <?php if ($explore_query->have_posts()) : 
+                            $explore_query->the_post();
+                            if (has_post_thumbnail()) : ?>
+                                <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl group-hover:shadow-md transition-shadow"
+                                    style="background-image: url('<?php echo get_the_post_thumbnail_url(get_the_ID(), 'medium'); ?>');">
+                                </div>
+                            <?php endif; 
+                        endif; 
+                        wp_reset_postdata(); ?>
+                        <div>
+                            <p class="text-[#0e141b] text-base font-medium leading-normal group-hover:text-[#1979e6] transition-colors">
+                                <?php echo esc_html($category->name); ?>
+                            </p>
+                            <p class="text-[#4e7097] text-sm font-normal leading-normal">
+                                <?php echo esc_html($category->description); ?>
+                            </p>
+                        </div>
+                    </a>
+            <?php
+                endforeach;
+            endif;
+            ?>
         </div>
 
         <div class="@container">

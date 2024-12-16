@@ -57,12 +57,12 @@ function register_xativa_route_post_type() {
     register_post_type('xativa_route', $args);
 }
 
-// Registrar tipo de contenido para lugares de interés
-function register_xativa_place_post_type() {
+// Registrar tipo de contenido para Explorar Xàtiva
+function register_xativa_explore_post_type() {
     $labels = array(
-        'name'                  => _x('Lugares', 'Post type general name', 'tu-tema'),
-        'singular_name'         => _x('Lugar', 'Post type singular name', 'tu-tema'),
-        'menu_name'            => _x('Lugares', 'Admin Menu text', 'tu-tema'),
+        'name'                  => _x('Explorar Xàtiva', 'Post type general name', 'tu-tema'),
+        'singular_name'         => _x('Explorar', 'Post type singular name', 'tu-tema'),
+        'menu_name'            => _x('Explorar Xàtiva', 'Admin Menu text', 'tu-tema'),
         'add_new'              => __('Añadir Nuevo', 'tu-tema'),
         'add_new_item'         => __('Añadir Nuevo Lugar', 'tu-tema'),
         'edit_item'            => __('Editar Lugar', 'tu-tema'),
@@ -80,25 +80,22 @@ function register_xativa_place_post_type() {
         'show_ui'             => true,
         'show_in_menu'        => true,
         'query_var'           => true,
-        'rewrite'             => array('slug' => 'lugares'),
+        'rewrite'             => array('slug' => 'explorar'),
         'capability_type'     => 'post',
         'has_archive'         => true,
         'hierarchical'        => false,
-        'menu_position'       => 6,
+        'menu_position'       => 5,
         'supports'            => array('title', 'editor', 'thumbnail', 'excerpt'),
         'menu_icon'           => 'dashicons-location',
         'show_in_rest'        => true,
     );
 
-    register_post_type('xativa_place', $args);
-}
+    register_post_type('xativa_explore', $args);
 
-// Registrar taxonomías para lugares
-function register_xativa_taxonomies() {
-    // Categorías para lugares
-    $labels = array(
-        'name'              => _x('Categorías de Lugares', 'taxonomy general name', 'tu-tema'),
-        'singular_name'     => _x('Categoría de Lugar', 'taxonomy singular name', 'tu-tema'),
+    // Registrar taxonomía para categorías de exploración
+    $tax_labels = array(
+        'name'              => _x('Categorías', 'taxonomy general name', 'tu-tema'),
+        'singular_name'     => _x('Categoría', 'taxonomy singular name', 'tu-tema'),
         'search_items'      => __('Buscar Categorías', 'tu-tema'),
         'all_items'         => __('Todas las Categorías', 'tu-tema'),
         'parent_item'       => __('Categoría Padre', 'tu-tema'),
@@ -106,17 +103,17 @@ function register_xativa_taxonomies() {
         'edit_item'         => __('Editar Categoría', 'tu-tema'),
         'update_item'       => __('Actualizar Categoría', 'tu-tema'),
         'add_new_item'      => __('Añadir Nueva Categoría', 'tu-tema'),
-        'new_item_name'     => __('Nuevo Nombre de Categoría', 'tu-tema'),
+        'new_item_name'     => __('Nueva Categoría', 'tu-tema'),
         'menu_name'         => __('Categorías', 'tu-tema'),
     );
 
-    register_taxonomy('place_category', array('xativa_place'), array(
+    register_taxonomy('explore_category', 'xativa_explore', array(
         'hierarchical'      => true,
-        'labels'           => $labels,
+        'labels'           => $tax_labels,
         'show_ui'          => true,
         'show_admin_column' => true,
         'query_var'        => true,
-        'rewrite'          => array('slug' => 'tipo-lugar'),
+        'rewrite'          => array('slug' => 'categoria-explorar'),
         'show_in_rest'     => true,
     ));
 }
@@ -191,83 +188,7 @@ function register_route_taxonomies() {
         'rewrite'           => array('slug' => 'paisaje'),
         'show_in_rest'      => true,
     ));
-
-    // Crear términos por defecto
-    $default_terms = array(
-        'route_difficulty' => array(
-            'facil' => 'Fácil',
-            'moderada' => 'Moderada',
-            'dificil' => 'Difícil',
-            'muy-dificil' => 'Muy Difícil'
-        ),
-        'route_type' => array(
-            'montana' => 'Montaña',
-            'carretera' => 'Carretera',
-            'mixta' => 'Mixta',
-            'gravel' => 'Gravel'
-        ),
-        'route_scenery' => array(
-            'montanoso' => 'Montañoso',
-            'urbano' => 'Urbano',
-            'rural' => 'Rural',
-            'bosque' => 'Bosque',
-            'rio' => 'Río'
-        )
-    );
-
-    // Insertar los términos
-    foreach ($default_terms as $taxonomy => $terms) {
-        foreach ($terms as $slug => $name) {
-            if (!term_exists($slug, $taxonomy)) {
-                wp_insert_term($name, $taxonomy, array('slug' => $slug));
-            }
-        }
-    }
 }
-
-// Registrar las taxonomías en init con prioridad 0 (antes que otros hooks de init)
-add_action('init', 'register_route_taxonomies', 0);
-
-// Registrar los post types y taxonomías
-add_action('init', 'register_xativa_route_post_type');
-add_action('init', 'register_xativa_place_post_type');
-add_action('init', 'register_xativa_taxonomies');
-
-// Configurar página de opciones de ACF
-if (function_exists('acf_add_options_page')) {
-    acf_add_options_page(array(
-        'page_title'    => 'Configuración del Tema',
-        'menu_title'    => 'Configuración del Tema',
-        'menu_slug'     => 'theme-general-settings',
-        'capability'    => 'edit_posts',
-        'redirect'      => false
-    ));
-}
-
-// Soporte para HTML5
-add_theme_support('html5', array(
-    'search-form',
-    'comment-form',
-    'comment-list',
-    'gallery',
-    'caption',
-    'style',
-    'script',
-));
-
-// Agregar soporte para el editor de bloques
-add_theme_support('wp-block-styles');
-add_theme_support('responsive-embeds');
-add_theme_support('align-wide'); 
-
-// Cargar scripts y estilos
-function tu_tema_scripts() {
-    // Solo cargar el script en el archivo de rutas
-    if (is_post_type_archive('xativa_route')) {
-        wp_enqueue_script('tu-tema-routes', get_template_directory_uri() . '/assets/js/routes.js', array(), '1.0', true);
-    }
-}
-add_action('wp_enqueue_scripts', 'tu_tema_scripts');
 
 // Crear términos por defecto para las taxonomías
 function create_default_terms() {
@@ -376,10 +297,122 @@ function create_default_terms() {
     }
 }
 
+// Crear términos por defecto para la taxonomía de exploración
+function create_default_explore_terms() {
+    $default_terms = array(
+        'historia' => array(
+            'name' => 'Historia',
+            'description' => 'Historia local de Xàtiva'
+        ),
+        'gastronomia' => array(
+            'name' => 'Gastronomía',
+            'description' => 'Gastronomía local de Xàtiva'
+        ),
+        'naturaleza' => array(
+            'name' => 'Naturaleza',
+            'description' => 'Entorno natural de Xàtiva'
+        ),
+        'cultura' => array(
+            'name' => 'Cultura',
+            'description' => 'Cultura y patrimonio de Xàtiva'
+        )
+    );
+
+    foreach ($default_terms as $slug => $term) {
+        if (!term_exists($slug, 'explore_category')) {
+            wp_insert_term(
+                $term['name'],
+                'explore_category',
+                array(
+                    'slug' => $slug,
+                    'description' => $term['description']
+                )
+            );
+        }
+    }
+}
+
+// Cargar scripts y estilos
+function tu_tema_scripts() {
+    // Solo cargar el script en el archivo de rutas
+    if (is_post_type_archive('xativa_route')) {
+        wp_enqueue_script('tu-tema-routes', get_template_directory_uri() . '/assets/js/routes.js', array(), '1.0', true);
+    }
+}
+
+// Registrar los post types y taxonomías
+add_action('init', 'register_xativa_route_post_type');
+add_action('init', 'register_xativa_explore_post_type');
+add_action('init', 'register_route_taxonomies');
+
 // Ejecutar la creación de términos cuando se active el tema
 add_action('after_switch_theme', 'create_default_terms');
+add_action('after_switch_theme', 'create_default_explore_terms');
 
-// También ejecutar la creación de términos cuando se registren las taxonomías
-// (esto es útil durante el desarrollo)
+// También ejecutar la creación de términos durante el desarrollo
 add_action('init', 'create_default_terms', 20);
+add_action('init', 'create_default_explore_terms', 20);
+
+// Cargar scripts
+add_action('wp_enqueue_scripts', 'tu_tema_scripts');
+
+// Configurar página de opciones de ACF
+if (function_exists('acf_add_options_page')) {
+    acf_add_options_page(array(
+        'page_title'    => 'Configuración del Tema',
+        'menu_title'    => 'Configuración del Tema',
+        'menu_slug'     => 'theme-general-settings',
+        'capability'    => 'edit_posts',
+        'redirect'      => false
+    ));
+}
+
+// Soporte para HTML5
+add_theme_support('html5', array(
+    'search-form',
+    'comment-form',
+    'comment-list',
+    'gallery',
+    'caption',
+    'style',
+    'script',
+));
+
+// Agregar soporte para el editor de bloques
+add_theme_support('wp-block-styles');
+add_theme_support('responsive-embeds');
+add_theme_support('align-wide');
+
+// Desregistrar tipos de contenido antiguos
+function unregister_old_post_types() {
+    global $wp_post_types;
+    
+    $post_types_to_remove = array(
+        'xativa_history',
+        'xativa_gastronomy',
+        'xativa_local_history',  // por si acaso existe con otro nombre
+        'xativa_local_gastronomy'
+    );
+
+    foreach ($post_types_to_remove as $post_type) {
+        if (post_type_exists($post_type)) {
+            unregister_post_type($post_type);
+        }
+        // También eliminar del array global por si acaso
+        if (isset($wp_post_types[$post_type])) {
+            unset($wp_post_types[$post_type]);
+        }
+    }
+}
+// Usar prioridad alta (99) para asegurarnos de que se ejecuta después de que se registren
+add_action('init', 'unregister_old_post_types', 99);
+
+// Ocultar los menús de administración de los tipos de contenido antiguos
+function remove_old_post_type_menus() {
+    remove_menu_page('edit.php?post_type=xativa_history');
+    remove_menu_page('edit.php?post_type=xativa_gastronomy');
+    remove_menu_page('edit.php?post_type=xativa_local_history');
+    remove_menu_page('edit.php?post_type=xativa_local_gastronomy');
+}
+add_action('admin_menu', 'remove_old_post_type_menus', 999);
   

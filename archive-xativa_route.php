@@ -147,9 +147,7 @@ $routes_query = new WP_Query($args);
                     <button type="button" class="filter-dropdown-toggle flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#e7edf3] pl-4 pr-2">
                         <p class="text-[#0e141b] text-sm font-medium leading-normal whitespace-nowrap"><?php _e('Dificultad', 'tu-tema'); ?></p>
                         <div class="text-[#0e141b]">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                                <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
-                            </svg>
+                            <i class="ph ph-caret-down text-xl"></i>
                         </div>
                     </button>
                     <div class="filter-dropdown hidden absolute top-full left-0 mt-2 w-48 rounded-xl bg-white shadow-lg z-50">
@@ -174,9 +172,7 @@ $routes_query = new WP_Query($args);
                     <button type="button" class="filter-dropdown-toggle flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#e7edf3] pl-4 pr-2">
                         <p class="text-[#0e141b] text-sm font-medium leading-normal whitespace-nowrap"><?php _e('Paisaje', 'tu-tema'); ?></p>
                         <div class="text-[#0e141b]">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                                <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
-                            </svg>
+                            <i class="ph ph-caret-down text-xl"></i>
                         </div>
                     </button>
                     <div class="filter-dropdown hidden absolute top-full left-0 mt-2 w-48 rounded-xl bg-white shadow-lg z-50">
@@ -201,9 +197,7 @@ $routes_query = new WP_Query($args);
                     <button type="button" class="filter-dropdown-toggle flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#e7edf3] pl-4 pr-2">
                         <p class="text-[#0e141b] text-sm font-medium leading-normal whitespace-nowrap"><?php _e('Tipo de ruta', 'tu-tema'); ?></p>
                         <div class="text-[#0e141b]">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                                <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
-                            </svg>
+                            <i class="ph ph-caret-down text-xl"></i>
                         </div>
                     </button>
                     <div class="filter-dropdown hidden absolute top-full left-0 mt-2 w-48 rounded-xl bg-white shadow-lg z-50">
@@ -265,8 +259,8 @@ $routes_query = new WP_Query($args);
             echo paginate_links(array(
                 'total' => $routes_query->max_num_pages,
                 'current' => $paged,
-                'prev_text' => '<svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" fill="currentColor" viewBox="0 0 256 256"><path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"></path></svg>',
-                'next_text' => '<svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" fill="currentColor" viewBox="0 0 256 256"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path></svg>',
+                'prev_text' => '<i class="ph ph-caret-left text-xl"></i>',
+                'next_text' => '<i class="ph ph-caret-right text-xl"></i>',
                 'type' => 'list',
                 'class' => 'pagination'
             ));

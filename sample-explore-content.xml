@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0"
+    xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
+    xmlns:content="http://purl.org/rss/1.0/modules/content/"
+    xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:wp="http://wordpress.org/export/1.2/"
+>
+<channel>
+    <wp:wxr_version>1.2</wp:wxr_version>
+
+    <!-- Términos de taxonomía -->
+    <wp:term>
+        <wp:term_id>100</wp:term_id>
+        <wp:term_taxonomy>explore_category</wp:term_taxonomy>
+        <wp:term_slug>historia</wp:term_slug>
+        <wp:term_name><![CDATA[Historia]]></wp:term_name>
+    </wp:term>
+    <wp:term>
+        <wp:term_id>101</wp:term_id>
+        <wp:term_taxonomy>explore_category</wp:term_taxonomy>
+        <wp:term_slug>gastronomia</wp:term_slug>
+        <wp:term_name><![CDATA[Gastronomía]]></wp:term_name>
+    </wp:term>
+    <wp:term>
+        <wp:term_id>102</wp:term_id>
+        <wp:term_taxonomy>explore_category</wp:term_taxonomy>
+        <wp:term_slug>naturaleza</wp:term_slug>
+        <wp:term_name><![CDATA[Naturaleza]]></wp:term_name>
+    </wp:term>
+    <wp:term>
+        <wp:term_id>103</wp:term_id>
+        <wp:term_taxonomy>explore_category</wp:term_taxonomy>
+        <wp:term_slug>cultura</wp:term_slug>
+        <wp:term_name><![CDATA[Cultura]]></wp:term_name>
+    </wp:term>
+
+    <!-- Historia -->
+    <item>
+        <title>Castillo de Xàtiva</title>
+        <link>http://paraiso.test/explorar/castillo-xativa</link>
+        <pubDate>Mon, 13 Dec 2023 10:00:00 +0000</pubDate>
+        <dc:creator>admin</dc:creator>
+        <guid isPermaLink="false">http://paraiso.test/explorar/castillo-xativa</guid>
+        <description></description>
+        <content:encoded><![CDATA[El Castillo de Xàtiva, también conocido como Castell de Xàtiva, es una fortaleza histórica que domina el paisaje de la ciudad. Con una historia que se remonta a la época ibérica, este castillo ha sido testigo de numerosos acontecimientos históricos y ha servido como prisión real durante siglos.]]></content:encoded>
+        <excerpt:encoded><![CDATA[Descubre la imponente fortaleza que ha vigilado Xàtiva durante siglos.]]></excerpt:encoded>
+        <wp:post_type>xativa_explore</wp:post_type>
+        <wp:status>publish</wp:status>
+        <wp:post_name>castillo-xativa</wp:post_name>
+        <category domain="explore_category" nicename="historia"><![CDATA[Historia]]></category>
+    </item>
+
+    <item>
+        <title>La Colegiata Basílica de Santa María</title>
+        <link>http://paraiso.test/explorar/colegiata-santa-maria</link>
+        <pubDate>Mon, 13 Dec 2023 10:01:00 +0000</pubDate>
+        <dc:creator>admin</dc:creator>
+        <guid isPermaLink="false">http://paraiso.test/explorar/colegiata-santa-maria</guid>
+        <description></description>
+        <content:encoded><![CDATA[La Colegiata Basílica de Santa María es uno de los monumentos más importantes de Xàtiva. Construida sobre una antigua mezquita, representa la transición del gótico al renacimiento en la arquitectura valenciana.]]></content:encoded>
+        <excerpt:encoded><![CDATA[Explora uno de los ejemplos más notables de la arquitectura religiosa valenciana.]]></excerpt:encoded>
+        <wp:post_type>xativa_explore</wp:post_type>
+        <wp:status>publish</wp:status>
+        <wp:post_name>colegiata-santa-maria</wp:post_name>
+        <category domain="explore_category" nicename="historia"><![CDATA[Historia]]></category>
+    </item>
+
+    <item>
+        <title>Museo del Almodí</title>
+        <link>http://paraiso.test/explorar/museo-almodi</link>
+        <pubDate>Mon, 13 Dec 2023 10:02:00 +0000</pubDate>
+        <dc:creator>admin</dc:creator>
+        <guid isPermaLink="false">http://paraiso.test/explorar/museo-almodi</guid>
+        <description></description>
+        <content:encoded><![CDATA[El Museo del Almodí, ubicado en un edificio gótico del siglo XVI, alberga una importante colección de arte y arqueología. Destaca especialmente por su colección de retratos de la familia Borja.]]></content:encoded>
+        <excerpt:encoded><![CDATA[Visita el principal museo de la ciudad, hogar de importantes colecciones artísticas.]]></excerpt:encoded>
+        <wp:post_type>xativa_explore</wp:post_type>
+        <wp:status>publish</wp:status>
+        <wp:post_name>museo-almodi</wp:post_name>
+        <category domain="explore_category" nicename="historia"><![CDATA[Historia]]></category>
+    </item>
+
+    <item>
+        <title>Portal del León</title>
+        <link>http://paraiso.test/explorar/portal-leon</link>
+        <pubDate>Mon, 13 Dec 2023 10:03:00 +0000</pubDate>
+        <dc:creator>admin</dc:creator>
+        <guid isPermaLink="false">http://paraiso.test/explorar/portal-leon</guid>
+        <description></description>
+        <content:encoded><![CDATA[El Portal del León es una de las antiguas puertas de entrada a la ciudad medieval de Xàtiva. Su nombre proviene de la figura de un león que corona la estructura, símbolo del poder y la nobleza de la ciudad.]]></content:encoded>
+        <excerpt:encoded><![CDATA[Descubre una de las puertas históricas mejor conservadas de la antigua muralla.]]></excerpt:encoded>
+        <wp:post_type>xativa_explore</wp:post_type>
+        <wp:status>publish</wp:status>
+        <wp:post_name>portal-leon</wp:post_name>
+        <category domain="explore_category" nicename="historia"><![CDATA[Historia]]></category>
+    </item>
+
+    <item>
+        <title>Casa Natal de Alejandro VI</title>
+        <link>http://paraiso.test/explorar/casa-alejandro-vi</link>
+        <pubDate>Mon, 13 Dec 2023 10:04:00 +0000</pubDate>
+        <dc:creator>admin</dc:creator>
+        <guid isPermaLink="false">http://paraiso.test/explorar/casa-alejandro-vi</guid>
+        <description></description>
+        <content:encoded><![CDATA[La Casa Natal de Alejandro VI es un edificio histórico donde nació Rodrigo Borja, quien más tarde se convertiría en el Papa Alejandro VI. Representa un importante testimonio de la conexión de Xàtiva con la familia Borja.]]></content:encoded>
+        <excerpt:encoded><![CDATA[Visita el lugar de nacimiento de uno de los personajes más influyentes de la historia de Xàtiva.]]></excerpt:encoded>
+        <wp:post_type>xativa_explore</wp:post_type>
+        <wp:status>publish</wp:status>
+        <wp:post_name>casa-alejandro-vi</wp:post_name>
+        <category domain="explore_category" nicename="historia"><![CDATA[Historia]]></category>
+    </item>
+
+    <!-- Gastronomía -->
+    <item>
+        <title>Arròs al Forn</title>
+        <link>http://paraiso.test/explorar/arros-al-forn</link>
+        <pubDate>Mon, 13 Dec 2023 10:05:00 +0000</pubDate>
+        <dc:creator>admin</dc:creator>
+        <guid isPermaLink="false">http://paraiso.test/explorar/arros-al-forn</guid>
+        <description></description>
+        <content:encoded><![CDATA[El Arròs al Forn es uno de los platos más tradicionales de Xàtiva. Este arroz al horno se caracteriza por su preparación con garbanzos, tomate, patatas y diferentes tipos de carne, creando una combinación única de sabores.]]></content:encoded>
+        <excerpt:encoded><![CDATA[Descubre uno de los platos más emblemáticos de la gastronomía local.]]></excerpt:encoded>
+        <wp:post_type>xativa_explore</wp:post_type>
+        <wp:status>publish</wp:status>
+        <wp:post_name>arros-al-forn</wp:post_name>
+        <category domain="explore_category" nicename="gastronomia"><![CDATA[Gastronomía]]></category>
+    </item>
+
+    <item>
+        <title>Bodegas Xàtiva</title>
+        <link>http://paraiso.test/explorar/bodegas-xativa</link>
+        <pubDate>Mon, 13 Dec 2023 10:06:00 +0000</pubDate>
+        <dc:creator>admin</dc:creator>
+        <guid isPermaLink="false">http://paraiso.test/explorar/bodegas-xativa</guid>
+        <description></description>
+        <content:encoded><![CDATA[Las Bodegas de Xàtiva representan una larga tradición vinícola en la región. Con sus viñedos situados en terrenos privilegiados, producen vinos que reflejan el carácter único del terroir local.]]></content:encoded>
+        <excerpt:encoded><![CDATA[Explora la tradición vinícola de la región y degusta sus vinos locales.]]></excerpt:encoded>
+        <wp:post_type>xativa_explore</wp:post_type>
+        <wp:status>publish</wp:status>
+        <wp:post_name>bodegas-xativa</wp:post_name>
+        <category domain="explore_category" nicename="gastronomia"><![CDATA[Gastronomía]]></category>
+    </item>
+
+    <item>
+        <title>Mercado Municipal</title>
+        <link>http://paraiso.test/explorar/mercado-municipal</link>
+        <pubDate>Mon, 13 Dec 2023 10:07:00 +0000</pubDate>
+        <dc:creator>admin</dc:creator>
+        <guid isPermaLink="false">http://paraiso.test/explorar/mercado-municipal</guid>
+        <description></description>
+        <content:encoded><![CDATA[El Mercado Municipal de Xàtiva es el corazón gastronómico de la ciudad. Aquí encontrarás los mejores productos locales, desde frutas y verduras frescas hasta pescados y carnes de primera calidad.]]></content:encoded>
+        <excerpt:encoded><![CDATA[Visita el centro de la vida gastronómica local y descubre los productos de la tierra.]]></excerpt:encoded>
+        <wp:post_type>xativa_explore</wp:post_type>
+        <wp:status>publish</wp:status>
+        <wp:post_name>mercado-municipal</wp:post_name>
+        <category domain="explore_category" nicename="gastronomia"><![CDATA[Gastronomía]]></category>
+    </item>
+
+    <item>
+        <title>Dulces Tradicionales</title>
+        <link>http://paraiso.test/explorar/dulces-tradicionales</link>
+        <pubDate>Mon, 13 Dec 2023 10:08:00 +0000</pubDate>
+        <dc:creator>admin</dc:creator>
+        <guid isPermaLink="false">http://paraiso.test/explorar/dulces-tradicionales</guid>
+        <description></description>
+        <content:encoded><![CDATA[Los dulces tradicionales de Xàtiva son un tesoro de la repostería valenciana. Desde los arnadí hasta los pastissets de boniato, cada dulce cuenta una historia de tradición y sabor.]]></content:encoded>
+        <excerpt:encoded><![CDATA[Prueba los dulces tradicionales que han endulzado generaciones.]]></excerpt:encoded>
+        <wp:post_type>xativa_explore</wp:post_type>
+        <wp:status>publish</wp:status>
+        <wp:post_name>dulces-tradicionales</wp:post_name>
+        <category domain="explore_category" nicename="gastronomia"><![CDATA[Gastronomía]]></category>
+    </item>
+
+    <item>
+        <title>Restaurantes Históricos</title>
+        <link>http://paraiso.test/explorar/restaurantes-historicos</link>
+        <pubDate>Mon, 13 Dec 2023 10:09:00 +0000</pubDate>
+        <dc:creator>admin</dc:creator>
+        <guid isPermaLink="false">http://paraiso.test/explorar/restaurantes-historicos</guid>
+        <description></description>
+        <content:encoded><![CDATA[Los restaurantes históricos de Xàtiva son guardianes de la tradición culinaria local. En sus cocinas se mantienen vivas recetas centenarias que han pasado de generación en generación.]]></content:encoded>
+        <excerpt:encoded><![CDATA[Descubre los establecimientos que mantienen viva la tradición gastronómica.]]></excerpt:encoded>
+        <wp:post_type>xativa_explore</wp:post_type>
+        <wp:status>publish</wp:status>
+        <wp:post_name>restaurantes-historicos</wp:post_name>
+        <category domain="explore_category" nicename="gastronomia"><![CDATA[Gastronomía]]></category>
+    </item>
+
+    <!-- Naturaleza -->
+    <item>
+        <title>Sierra de Vernissa</title>
+        <link>http://paraiso.test/explorar/sierra-vernissa</link>
+        <pubDate>Mon, 13 Dec 2023 10:10:00 +0000</pubDate>
+        <dc:creator>admin</dc:creator>
+        <guid isPermaLink="false">http://paraiso.test/explorar/sierra-vernissa</guid>
+        <description></description>
+        <content:encoded><![CDATA[La Sierra de Vernissa ofrece un espectacular paisaje montañoso con una rica biodiversidad. Sus senderos permiten descubrir la flora y fauna local mientras se disfruta de impresionantes vistas.]]></content:encoded>
+        <excerpt:encoded><![CDATA[Explora uno de los entornos naturales más impresionantes de la región.]]></excerpt:encoded>
+        <wp:post_type>xativa_explore</wp:post_type>
+        <wp:status>publish</wp:status>
+        <wp:post_name>sierra-vernissa</wp:post_name>
+        <category domain="explore_category" nicename="naturaleza"><![CDATA[Naturaleza]]></category>
+    </item>
+
+    <item>
+        <title>Fuente de los 25 Caños</title>
+        <link>http://paraiso.test/explorar/fuente-25-canos</link>
+        <pubDate>Mon, 13 Dec 2023 10:11:00 +0000</pubDate>
+        <dc:creator>admin</dc:creator>
+        <guid isPermaLink="false">http://paraiso.test/explorar/fuente-25-canos</guid>
+        <description></description>
+        <content:encoded><![CDATA[La Fuente de los 25 Caños es un monumento natural e histórico que representa la importancia del agua en la historia de Xàtiva. Sus aguas cristalinas han refrescado a viajeros durante siglos.]]></content:encoded>
+        <excerpt:encoded><![CDATA[Visita esta histórica fuente que ha sido testigo de la historia de la ciudad.]]></excerpt:encoded>
+        <wp:post_type>xativa_explore</wp:post_type>
+        <wp:status>publish</wp:status>
+        <wp:post_name>fuente-25-canos</wp:post_name>
+        <category domain="explore_category" nicename="naturaleza"><![CDATA[Naturaleza]]></category>
+    </item>
+
+    <item>
+        <title>Jardín del Beso</title>
+        <link>http://paraiso.test/explorar/jardin-beso</link>
+        <pubDate>Mon, 13 Dec 2023 10:12:00 +0000</pubDate>
+        <dc:creator>admin</dc:creator>
+        <guid isPermaLink="false">http://paraiso.test/explorar/jardin-beso</guid>
+        <description></description>
+        <content:encoded><![CDATA[El Jardín del Beso es un romántico espacio verde en el corazón de Xàtiva. Sus jardines históricos combinan la belleza natural con el diseño paisajístico tradicional valenciano.]]></content:encoded>
+        <excerpt:encoded><![CDATA[Descubre este romántico jardín histórico en el centro de la ciudad.]]></excerpt:encoded>
+        <wp:post_type>xativa_explore</wp:post_type>
+        <wp:status>publish</wp:status>
+        <wp:post_name>jardin-beso</wp:post_name>
+        <category domain="explore_category" nicename="naturaleza"><![CDATA[Naturaleza]]></category>
+    </item>
+
+    <item>
+        <title>Monte Bernisa</title>
+        <link>http://paraiso.test/explorar/monte-bernisa</link>
+        <pubDate>Mon, 13 Dec 2023 10:13:00 +0000</pubDate>
+        <dc:creator>admin</dc:creator>
+        <guid isPermaLink="false">http://paraiso.test/explorar/monte-bernisa</guid>
+        <description></description>
+        <content:encoded><![CDATA[El Monte Bernisa ofrece algunas de las mejores vistas panorámicas de Xàtiva y sus alrededores. Es un lugar perfecto para el senderismo y la observación de aves.]]></content:encoded>
+        <excerpt:encoded><![CDATA[Disfruta de las mejores vistas panorámicas de la ciudad y su entorno.]]></excerpt:encoded>
+        <wp:post_type>xativa_explore</wp:post_type>
+        <wp:status>publish</wp:status>
+        <wp:post_name>monte-bernisa</wp:post_name>
+        <category domain="explore_category" nicename="naturaleza"><![CDATA[Naturaleza]]></category>
+    </item>
+
+    <item>
+        <title>Parque de la Alameda</title>
+        <link>http://paraiso.test/explorar/parque-alameda</link>
+        <pubDate>Mon, 13 Dec 2023 10:14:00 +0000</pubDate>
+        <dc:creator>admin</dc:creator>
+        <guid isPermaLink="false">http://paraiso.test/explorar/parque-alameda</guid>
+        <description></description>
+        <content:encoded><![CDATA[El Parque de la Alameda es el principal pulmón verde de Xàtiva. Sus amplios paseos arbolados y zonas de descanso ofrecen un refugio perfecto del bullicio urbano.]]></content:encoded>
+        <excerpt:encoded><![CDATA[Relájate en el principal parque urbano de la ciudad.]]></excerpt:encoded>
+        <wp:post_type>xativa_explore</wp:post_type>
+        <wp:status>publish</wp:status>
+        <wp:post_name>parque-alameda</wp:post_name>
+        <category domain="explore_category" nicename="naturaleza"><![CDATA[Naturaleza]]></category>
+    </item>
+
+    <!-- Cultura -->
+    <item>
+        <title>Teatro Principal</title>
+        <link>http://paraiso.test/explorar/teatro-principal</link>
+        <pubDate>Mon, 13 Dec 2023 10:15:00 +0000</pubDate>
+        <dc:creator>admin</dc:creator>
+        <guid isPermaLink="false">http://paraiso.test/explorar/teatro-principal</guid>
+        <description></description>
+        <content:encoded><![CDATA[El Teatro Principal de Xàtiva es un magnífico ejemplo de arquitectura teatral del siglo XIX. Sigue siendo el centro de la vida cultural de la ciudad, acogiendo representaciones teatrales y musicales.]]></content:encoded>
+        <excerpt:encoded><![CDATA[Visita este histórico teatro, corazón de la vida cultural de Xàtiva.]]></excerpt:encoded>
+        <wp:post_type>xativa_explore</wp:post_type>
+        <wp:status>publish</wp:status>
+        <wp:post_name>teatro-principal</wp:post_name>
+        <category domain="explore_category" nicename="cultura"><![CDATA[Cultura]]></category>
+    </item>
+
+    <item>
+        <title>Casa de la Cultura</title>
+        <link>http://paraiso.test/explorar/casa-cultura</link>
+        <pubDate>Mon, 13 Dec 2023 10:16:00 +0000</pubDate>
+        <dc:creator>admin</dc:creator>
+        <guid isPermaLink="false">http://paraiso.test/explorar/casa-cultura</guid>
+        <description></description>
+        <content:encoded><![CDATA[La Casa de la Cultura es un centro dinámico que alberga exposiciones, conferencias y eventos culturales. Su programación variada refleja la rica vida cultural de Xàtiva.]]></content:encoded>
+        <excerpt:encoded><![CDATA[Descubre el principal centro cultural de la ciudad.]]></excerpt:encoded>
+        <wp:post_type>xativa_explore</wp:post_type>
+        <wp:status>publish</wp:status>
+        <wp:post_name>casa-cultura</wp:post_name>
+        <category domain="explore_category" nicename="cultura"><![CDATA[Cultura]]></category>
+    </item>
+
+    <item>
+        <title>Fiestas de la Fira</title>
+        <link>http://paraiso.test/explorar/fiestas-fira</link>
+        <pubDate>Mon, 13 Dec 2023 10:17:00 +0000</pubDate>
+        <dc:creator>admin</dc:creator>
+        <guid isPermaLink="false">http://paraiso.test/explorar/fiestas-fira</guid>
+        <description></description>
+        <content:encoded><![CDATA[Las Fiestas de la Fira son la celebración más importante de Xàtiva. Durante varios días, la ciudad se llena de música, danza, exposiciones y eventos culturales que muestran las tradiciones locales.]]></content:encoded>
+        <excerpt:encoded><![CDATA[Participa en las fiestas más importantes de la ciudad.]]></excerpt:encoded>
+        <wp:post_type>xativa_explore</wp:post_type>
+        <wp:status>publish</wp:status>
+        <wp:post_name>fiestas-fira</wp:post_name>
+        <category domain="explore_category" nicename="cultura"><![CDATA[Cultura]]></category>
+    </item>
+
+    <item>
+        <title>Museo de Bellas Artes</title>
+        <link>http://paraiso.test/explorar/museo-bellas-artes</link>
+        <pubDate>Mon, 13 Dec 2023 10:18:00 +0000</pubDate>
+        <dc:creator>admin</dc:creator>
+        <guid isPermaLink="false">http://paraiso.test/explorar/museo-bellas-artes</guid>
+        <description></description>
+        <content:encoded><![CDATA[El Museo de Bellas Artes alberga una importante colección de arte valenciano, incluyendo obras desde el período medieval hasta la actualidad. Sus salas ofrecen un recorrido por la historia del arte local.]]></content:encoded>
+        <excerpt:encoded><![CDATA[Explora la rica colección artística de la ciudad.]]></excerpt:encoded>
+        <wp:post_type>xativa_explore</wp:post_type>
+        <wp:status>publish</wp:status>
+        <wp:post_name>museo-bellas-artes</wp:post_name>
+        <category domain="explore_category" nicename="cultura"><![CDATA[Cultura]]></category>
+    </item>
+
+    <item>
+        <title>Centro de Artesanía</title>
+        <link>http://paraiso.test/explorar/centro-artesania</link>
+        <pubDate>Mon, 13 Dec 2023 10:19:00 +0000</pubDate>
+        <dc:creator>admin</dc:creator>
+        <guid isPermaLink="false">http://paraiso.test/explorar/centro-artesania</guid>
+        <description></description>
+        <content:encoded><![CDATA[El Centro de Artesanía de Xàtiva es un espacio dedicado a la preservación y promoción de las artesanías tradicionales. Aquí puedes ver artesanos trabajando y aprender sobre técnicas ancestrales.]]></content:encoded>
+        <excerpt:encoded><![CDATA[Descubre las artesanías tradicionales de la región.]]></excerpt:encoded>
+        <wp:post_type>xativa_explore</wp:post_type>
+        <wp:status>publish</wp:status>
+        <wp:post_name>centro-artesania</wp:post_name>
+        <category domain="explore_category" nicename="cultura"><![CDATA[Cultura]]></category>
+    </item>
+
+</channel>
+</rss> 
