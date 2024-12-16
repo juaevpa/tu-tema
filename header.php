@@ -34,10 +34,11 @@
                 <h2 class="text-[#0e141b] text-lg font-bold leading-tight tracking-[-0.015em]">Cycling Xàtiva</h2>
             </a>
             <div class="flex items-center gap-9">
-              <a class="text-[#0e141b] text-sm font-medium leading-normal" href="<?php echo get_post_type_archive_link('xativa_route'); ?>">Routes</a>
+              <a class="text-[#0e141b] text-sm font-medium leading-normal" href="<?php echo get_post_type_archive_link('xativa_route'); ?>">Rutas</a>
               <a class="text-[#0e141b] text-sm font-medium leading-normal" href="<?php echo get_permalink(get_option('page_for_posts')); ?>">Blog</a>
-              <a class="text-[#0e141b] text-sm font-medium leading-normal" href="<?php echo get_page_link(get_page_by_path('about')); ?>">About</a>
-              <a class="text-[#0e141b] text-sm font-medium leading-normal" href="<?php echo get_page_link(get_page_by_path('add-route')); ?>">Add a route</a>
+              <a class="text-[#0e141b] text-sm font-medium leading-normal" href="<?php echo get_page_link(get_page_by_path('sobre-nosotros')); ?>">Sobre nosotros</a>
+    
+              <a class="text-[#0e141b] text-sm font-medium leading-normal" href="<?php echo get_post_type_archive_link('xativa_explore'); ?>">Explorar</a>
             </div>
           </div>
           <div class="flex flex-1 justify-end gap-8">
