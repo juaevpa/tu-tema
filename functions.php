@@ -415,4 +415,11 @@ function remove_old_post_type_menus() {
     remove_menu_page('edit.php?post_type=xativa_local_gastronomy');
 }
 add_action('admin_menu', 'remove_old_post_type_menus', 999);
+
+function add_chat_assistant_scripts() {
+    if (is_front_page()) {
+        wp_enqueue_script('chat-assistant', get_template_directory_uri() . '/assets/js/chat-assistant.js', array(), '1.0', true);
+    }
+}
+add_action('wp_enqueue_scripts', 'add_chat_assistant_scripts');
   

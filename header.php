@@ -27,12 +27,12 @@
       <div class="layout-container flex h-full grow flex-col">
         <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e7edf3] px-10 py-3">
           <div class="flex items-center gap-8">
-            <div class="flex items-center gap-4 text-[#0e141b]">
-              <div class="size-4">
-                <i class="ph ph-mountains text-xl"></i>
-              </div>
-              <h2 class="text-[#0e141b] text-lg font-bold leading-tight tracking-[-0.015em]">Cycling Xàtiva</h2>
-            </div>
+            <a href="<?php echo home_url('/'); ?>" class="flex items-center gap-4 text-[#0e141b]">
+                <div class="size-4">
+                    <i class="ph ph-mountains text-xl"></i>
+                </div>
+                <h2 class="text-[#0e141b] text-lg font-bold leading-tight tracking-[-0.015em]">Cycling Xàtiva</h2>
+            </a>
             <div class="flex items-center gap-9">
               <a class="text-[#0e141b] text-sm font-medium leading-normal" href="<?php echo get_post_type_archive_link('xativa_route'); ?>">Routes</a>
               <a class="text-[#0e141b] text-sm font-medium leading-normal" href="<?php echo get_permalink(get_option('page_for_posts')); ?>">Blog</a>

@@ -133,20 +133,41 @@
 
         <div class="@container">
             <div class="flex flex-col justify-end gap-6 px-4 py-10 @[480px]:gap-8 @[480px]:px-10 @[480px]:py-20">
-                <div class="flex flex-col gap-2 text-center">
-                    <h1 class="text-[#0e141b] tracking-light text-[32px] font-bold leading-tight @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em] max-w-[720px]">
-                        Don't know where to start?
-                    </h1>
+                <h2 class="text-[#0e141b] text-[22px] font-bold leading-tight tracking-[-0.015em]">
+                    ¿No sabes por dónde empezar?
+                </h2>
+                <button
+                    onclick="openChatModal()"
+                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#1979e6] text-slate-50 text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em] hover:bg-[#1565c0] transition-colors">
+                    <i class="ph ph-chat-dots mr-2"></i>
+                    <span class="truncate">Pregunta a un local</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="chat-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+    <div class="bg-white rounded-xl max-w-2xl w-full mx-4 h-[600px] flex flex-col relative">
+        <!-- Cabecera -->
+        <div class="border-b border-[#e7edf3] p-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-[#1979e6] flex items-center justify-center">
+                    <i class="ph ph-user text-white"></i>
                 </div>
-                <div class="flex flex-1 justify-center">
-                    <div class="flex justify-center">
-                        <button
-                            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#1979e6] text-slate-50 text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em] grow">
-                            <span class="truncate">Ask a local</span>
-                        </button>
-                    </div>
+                <div>
+                    <h2 class="font-bold">Guía Local Virtual</h2>
+                    <p class="text-sm text-[#4e7097]">Siempre disponible para ayudarte</p>
                 </div>
             </div>
+            <button onclick="document.getElementById('chat-modal').classList.add('hidden')" class="text-[#4e7097] hover:text-[#1979e6]">
+                <i class="ph ph-x text-2xl"></i>
+            </button>
+        </div>
+        
+        <!-- Contenido del chat -->
+        <div id="chat-messages" class="flex-1 overflow-y-auto p-4 space-y-4">
+            <!-- Los mensajes se añadirán aquí dinámicamente -->
         </div>
     </div>
 </div>
