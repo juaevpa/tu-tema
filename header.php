@@ -20,7 +20,52 @@
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <?php wp_head(); ?>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=typography,forms,container-queries"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            typography: {
+              DEFAULT: {
+                css: {
+                  maxWidth: 'none',
+                  color: '#4e7097',
+                  h1: {
+                    color: '#0e141b',
+                    fontWeight: '700',
+                  },
+                  h2: {
+                    color: '#0e141b',
+                    fontWeight: '700',
+                  },
+                  h3: {
+                    color: '#0e141b',
+                    fontWeight: '700',
+                  },
+                  a: {
+                    color: '#1979e6',
+                    '&:hover': {
+                      color: '#1565c0',
+                    },
+                    textDecoration: 'none',
+                  },
+                  strong: {
+                    color: '#0e141b',
+                  },
+                  ul: {
+                    li: {
+                      '&::before': {
+                        backgroundColor: '#4e7097',
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      }
+    </script>
 </head>
 <body <?php body_class(); ?>>
     <div class="relative flex size-full min-h-screen flex-col bg-slate-50 group/design-root overflow-x-hidden" style='font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;'>
@@ -36,7 +81,7 @@
             <div class="flex items-center gap-9">
               <a class="text-[#0e141b] text-sm font-medium leading-normal" href="<?php echo get_post_type_archive_link('xativa_route'); ?>">Rutas</a>
               <a class="text-[#0e141b] text-sm font-medium leading-normal" href="<?php echo get_permalink(get_option('page_for_posts')); ?>">Blog</a>
-              <a class="text-[#0e141b] text-sm font-medium leading-normal" href="<?php echo get_page_link(get_page_by_path('sobre-nosotros')); ?>">Sobre nosotros</a>
+              <a class="text-[#0e141b] text-sm font-medium leading-normal" href="<?php echo get_permalink(33); ?>">Sobre nosotros</a>
     
               <a class="text-[#0e141b] text-sm font-medium leading-normal" href="<?php echo get_post_type_archive_link('xativa_explore'); ?>">Explorar</a>
             </div>

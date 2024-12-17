@@ -5,6 +5,8 @@
  * @package Tu_Tema
  */
 
+    
+
 if (!function_exists('tu_tema_setup')):
     function tu_tema_setup() {
         // Soporte para miniaturas en posts
@@ -422,4 +424,174 @@ function add_chat_assistant_scripts() {
     }
 }
 add_action('wp_enqueue_scripts', 'add_chat_assistant_scripts');
+
+function mostrar_plantilla_actual() {
+    if (!is_admin() && current_user_can('administrator')) {
+        global $template;
+        $nombre_plantilla = basename($template);
+        
+        // Obtener el post type si estamos en un post type personalizado
+        $post_type = get_post_type();
+        
+        // Preparar el mensaje
+        $mensaje = "Plantilla: <strong>{$nombre_plantilla}</strong>";
+        if ($post_type) {
+            $mensaje .= " | Post Type: <strong>{$post_type}</strong>";
+        }
+        
+        // Añadir el nodo a la barra de admin
+        global $wp_admin_bar;
+        $wp_admin_bar->add_node(array(
+            'id'    => 'plantilla-actual',
+            'title' => $mensaje,
+            'href'  => '#',
+            'meta'  => array(
+                'class' => 'plantilla-actual'
+            )
+        ));
+    }
+}
+add_action('admin_bar_menu', 'mostrar_plantilla_actual', 100);
+
+function estilos_plantilla_actual() {
+    if (!is_admin() && current_user_can('administrator')) {
+        ?>
+        <style>
+            #wp-admin-bar-plantilla-actual {
+                background: #1979e6 !important;
+            }
+            #wp-admin-bar-plantilla-actual .ab-item {
+                color: white !important;
+            }
+        </style>
+        <?php
+    }
+}
+add_action('wp_head', 'estilos_plantilla_actual');
+
+// Registrar tipo de contenido personalizado para hoteles
+function register_xativa_hotel_post_type() {
+    $labels = array(
+        'name'                  => _x('Hoteles', 'Post type general name', 'tu-tema'),
+        'singular_name'         => _x('Hotel', 'Post type singular name', 'tu-tema'),
+        'menu_name'            => _x('Hoteles', 'Admin Menu text', 'tu-tema'),
+        'add_new'              => __('Añadir Nuevo', 'tu-tema'),
+        'add_new_item'         => __('Añadir Nuevo Hotel', 'tu-tema'),
+        'edit_item'            => __('Editar Hotel', 'tu-tema'),
+        'new_item'             => __('Nuevo Hotel', 'tu-tema'),
+        'view_item'            => __('Ver Hotel', 'tu-tema'),
+        'search_items'         => __('Buscar Hoteles', 'tu-tema'),
+        'not_found'            => __('No se encontraron hoteles', 'tu-tema'),
+        'not_found_in_trash'   => __('No hay hoteles en la papelera', 'tu-tema'),
+    );
+
+    $args = array(
+        'labels'              => $labels,
+        'public'              => true,
+        'publicly_queryable'  => true,
+        'show_ui'             => true,
+        'show_in_menu'        => true,
+        'query_var'           => true,
+        'rewrite'             => array('slug' => 'hoteles'),
+        'capability_type'     => 'post',
+        'has_archive'         => true,
+        'hierarchical'        => false,
+        'menu_position'       => 5,
+        'supports'            => array('title', 'editor', 'thumbnail', 'excerpt'),
+        'menu_icon'           => 'dashicons-building',
+        'show_in_rest'        => true,
+    );
+
+    register_post_type('xativa_hotel', $args);
+
+    // Registrar taxonomía para categorías de hoteles
+    $tax_labels = array(
+        'name'              => _x('Categorías de Hotel', 'taxonomy general name', 'tu-tema'),
+        'singular_name'     => _x('Categoría de Hotel', 'taxonomy singular name', 'tu-tema'),
+        'search_items'      => __('Buscar Categorías', 'tu-tema'),
+        'all_items'         => __('Todas las Categorías', 'tu-tema'),
+        'parent_item'       => __('Categoría Padre', 'tu-tema'),
+        'parent_item_colon' => __('Categoría Padre:', 'tu-tema'),
+        'edit_item'         => __('Editar Categoría', 'tu-tema'),
+        'update_item'       => __('Actualizar Categoría', 'tu-tema'),
+        'add_new_item'      => __('Añadir Nueva Categoría', 'tu-tema'),
+        'new_item_name'     => __('Nueva Categoría', 'tu-tema'),
+        'menu_name'         => __('Categorías', 'tu-tema'),
+    );
+
+    register_taxonomy('hotel_category', 'xativa_hotel', array(
+        'hierarchical'      => true,
+        'labels'           => $tax_labels,
+        'show_ui'          => true,
+        'show_admin_column' => true,
+        'query_var'        => true,
+        'rewrite'          => array('slug' => 'categoria-hotel'),
+        'show_in_rest'     => true,
+    ));
+}
+
+// Registrar tipo de contenido personalizado para restaurantes
+function register_xativa_restaurant_post_type() {
+    $labels = array(
+        'name'                  => _x('Restaurantes', 'Post type general name', 'tu-tema'),
+        'singular_name'         => _x('Restaurante', 'Post type singular name', 'tu-tema'),
+        'menu_name'            => _x('Restaurantes', 'Admin Menu text', 'tu-tema'),
+        'add_new'              => __('Añadir Nuevo', 'tu-tema'),
+        'add_new_item'         => __('Añadir Nuevo Restaurante', 'tu-tema'),
+        'edit_item'            => __('Editar Restaurante', 'tu-tema'),
+        'new_item'             => __('Nuevo Restaurante', 'tu-tema'),
+        'view_item'            => __('Ver Restaurante', 'tu-tema'),
+        'search_items'         => __('Buscar Restaurantes', 'tu-tema'),
+        'not_found'            => __('No se encontraron restaurantes', 'tu-tema'),
+        'not_found_in_trash'   => __('No hay restaurantes en la papelera', 'tu-tema'),
+    );
+
+    $args = array(
+        'labels'              => $labels,
+        'public'              => true,
+        'publicly_queryable'  => true,
+        'show_ui'             => true,
+        'show_in_menu'        => true,
+        'query_var'           => true,
+        'rewrite'             => array('slug' => 'restaurantes'),
+        'capability_type'     => 'post',
+        'has_archive'         => true,
+        'hierarchical'        => false,
+        'menu_position'       => 5,
+        'supports'            => array('title', 'editor', 'thumbnail', 'excerpt'),
+        'menu_icon'           => 'dashicons-food',
+        'show_in_rest'        => true,
+    );
+
+    register_post_type('xativa_restaurant', $args);
+
+    // Registrar taxonomía para categorías de restaurantes
+    $tax_labels = array(
+        'name'              => _x('Categorías de Restaurante', 'taxonomy general name', 'tu-tema'),
+        'singular_name'     => _x('Categoría de Restaurante', 'taxonomy singular name', 'tu-tema'),
+        'search_items'      => __('Buscar Categorías', 'tu-tema'),
+        'all_items'         => __('Todas las Categorías', 'tu-tema'),
+        'parent_item'       => __('Categoría Padre', 'tu-tema'),
+        'parent_item_colon' => __('Categoría Padre:', 'tu-tema'),
+        'edit_item'         => __('Editar Categoría', 'tu-tema'),
+        'update_item'       => __('Actualizar Categoría', 'tu-tema'),
+        'add_new_item'      => __('Añadir Nueva Categoría', 'tu-tema'),
+        'new_item_name'     => __('Nueva Categoría', 'tu-tema'),
+        'menu_name'         => __('Categorías', 'tu-tema'),
+    );
+
+    register_taxonomy('restaurant_category', 'xativa_restaurant', array(
+        'hierarchical'      => true,
+        'labels'           => $tax_labels,
+        'show_ui'          => true,
+        'show_admin_column' => true,
+        'query_var'        => true,
+        'rewrite'          => array('slug' => 'categoria-restaurante'),
+        'show_in_rest'     => true,
+    ));
+}
+
+// Añadir los hooks para registrar los nuevos tipos de contenido
+add_action('init', 'register_xativa_hotel_post_type');
+add_action('init', 'register_xativa_restaurant_post_type');
   

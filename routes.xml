@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0"
+    xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
+    xmlns:content="http://purl.org/rss/1.0/modules/content/"
+    xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:wp="http://wordpress.org/export/1.2/">
+    <channel>
+        <title>Xàtiva Cycling - Rutas</title>
+        <link>http://paraiso.test</link>
+        <description>Rutas ciclistas</description>
+        <pubDate>Thu, 14 Dec 2023 12:00:00 +0000</pubDate>
+        <language>es-ES</language>
+        <wp:wxr_version>1.2</wp:wxr_version>
+        <wp:base_site_url>http://paraiso.test</wp:base_site_url>
+        <wp:base_blog_url>http://paraiso.test</wp:base_blog_url>
+
+        <!-- Imágenes -->
+        <item>
+            <title>Vista Castillo Xàtiva</title>
+            <link>http://paraiso.test/wp-content/uploads/2023/12/vista-castillo.jpg</link>
+            <pubDate>Thu, 14 Dec 2023 10:00:00 +0000</pubDate>
+            <dc:creator><![CDATA[admin]]></dc:creator>
+            <guid isPermaLink="false">https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Castell_de_X%C3%A0tiva_des_del_cam%C3%AD_de_pujada.JPG/1280px-Castell_de_X%C3%A0tiva_des_del_cam%C3%AD_de_pujada.JPG</guid>
+            <wp:post_id>200</wp:post_id>
+            <wp:post_type>attachment</wp:post_type>
+            <wp:attachment_url>http://paraiso.test/wp-content/uploads/2023/12/vista-castillo.jpg</wp:attachment_url>
+        </item>
+
+        <item>
+            <title>Serra Grossa</title>
+            <link>http://paraiso.test/wp-content/uploads/2023/12/serra-grossa.jpg</link>
+            <pubDate>Thu, 14 Dec 2023 10:01:00 +0000</pubDate>
+            <dc:creator><![CDATA[admin]]></dc:creator>
+            <guid isPermaLink="false">https://upload.wikimedia.org/wikipedia/commons/5/5f/Serra_Grossa_des_de_X%C3%A0tiva.jpg</guid>
+            <wp:post_id>201</wp:post_id>
+            <wp:post_type>attachment</wp:post_type>
+            <wp:attachment_url>http://paraiso.test/wp-content/uploads/2023/12/serra-grossa.jpg</wp:attachment_url>
+        </item>
+
+        <item>
+            <title>Valle de Bixquert</title>
+            <link>http://paraiso.test/wp-content/uploads/2023/12/bixquert.jpg</link>
+            <pubDate>Thu, 14 Dec 2023 10:02:00 +0000</pubDate>
+            <dc:creator><![CDATA[admin]]></dc:creator>
+            <guid isPermaLink="false">https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Vista_de_Bixquert.jpg/1280px-Vista_de_Bixquert.jpg</guid>
+            <wp:post_id>202</wp:post_id>
+            <wp:post_type>attachment</wp:post_type>
+            <wp:attachment_url>http://paraiso.test/wp-content/uploads/2023/12/bixquert.jpg</wp:attachment_url>
+        </item>
+
+        <!-- Ruta 1: Castillo de Xàtiva -->
+        <item>
+            <title><![CDATA[Ruta al Castillo de Xàtiva]]></title>
+            <link>http://paraiso.test/xativa_route/ruta-castillo-xativa</link>
+            <pubDate>Thu, 14 Dec 2023 10:00:00 +0000</pubDate>
+            <dc:creator><![CDATA[admin]]></dc:creator>
+            <guid isPermaLink="false">http://paraiso.test/?post_type=xativa_route&#038;p=10</guid>
+            <description></description>
+            <content:encoded><![CDATA[
+                <p>Una espectacular ruta circular que te lleva hasta el emblemático Castillo de Xàtiva, ofreciendo vistas panorámicas inolvidables de la ciudad y sus alrededores.</p>
+
+                <h2>Descripción de la ruta</h2>
+                <p>Comenzamos en el centro histórico de Xàtiva, ascendiendo por caminos bien señalizados hasta alcanzar el majestuoso castillo. El recorrido combina tramos de asfalto y caminos de tierra compactada.</p>
+
+                <h2>Puntos de interés</h2>
+                <ul>
+                    <li>Plaza del Mercat</li>
+                    <li>Ermita de Sant Josep</li>
+                    <li>Castillo Menor</li>
+                    <li>Castillo Mayor</li>
+                    <li>Mirador de la Penya Roja</li>
+                </ul>
+
+                <h2>Detalles técnicos</h2>
+                <ul>
+                    <li>Distancia: 12.5 km</li>
+                    <li>Desnivel positivo: 450m</li>
+                    <li>Dificultad: Media-Alta</li>
+                    <li>Tiempo estimado: 2-3 horas</li>
+                </ul>
+
+                <h2>Recomendaciones</h2>
+                <ul>
+                    <li>Llevar agua suficiente</li>
+                    <li>Protección solar</li>
+                    <li>Calzado adecuado</li>
+                    <li>Mejor evitar las horas centrales del día en verano</li>
+                </ul>
+
+                <p>Track en Wikiloc: <a href="https://www.wikiloc.com/mountain-biking-trails/xativa-castillo-16573207" target="_blank">Ver ruta completa</a></p>
+            ]]></content:encoded>
+            <excerpt:encoded><![CDATA[Descubre el majestuoso Castillo de Xàtiva en esta ruta circular de dificultad media-alta con impresionantes vistas panorámicas.]]></excerpt:encoded>
+            <wp:post_id>10</wp:post_id>
+            <wp:post_date>2023-12-14 10:00:00</wp:post_date>
+            <wp:post_date_gmt>2023-12-14 10:00:00</wp:post_date_gmt>
+            <wp:status>publish</wp:status>
+            <wp:post_type>xativa_route</wp:post_type>
+            <wp:postmeta>
+                <wp:meta_key>distance</wp:meta_key>
+                <wp:meta_value><![CDATA[12.5]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>difficulty</wp:meta_key>
+                <wp:meta_value><![CDATA[hard]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>wikiloc_url</wp:meta_key>
+                <wp:meta_value><![CDATA[https://www.wikiloc.com/mountain-biking-trails/xativa-castillo-16573207]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_thumbnail_id</wp:meta_key>
+                <wp:meta_value><![CDATA[200]]></wp:meta_value>
+            </wp:postmeta>
+        </item>
+
+        <!-- Ruta 2: Serra Grossa -->
+        <item>
+            <title><![CDATA[Ruta Serra Grossa]]></title>
+            <link>http://paraiso.test/xativa_route/ruta-serra-grossa</link>
+            <pubDate>Thu, 14 Dec 2023 11:00:00 +0000</pubDate>
+            <dc:creator><![CDATA[admin]]></dc:creator>
+            <guid isPermaLink="false">http://paraiso.test/?post_type=xativa_route&#038;p=11</guid>
+            <description></description>
+            <content:encoded><![CDATA[
+                <p>Una aventura por la Serra Grossa que te permitirá descubrir algunos de los paisajes más impresionantes de la comarca.</p>
+
+                <h2>Descripción de la ruta</h2>
+                <p>Recorrido circular que atraviesa la Serra Grossa, ofreciendo una combinación perfecta de senderos técnicos y pistas forestales. Ideal para amantes del mountain bike que buscan un desafío.</p>
+
+                <h2>Puntos de interés</h2>
+                <ul>
+                    <li>Font de la Teula</li>
+                    <li>Mirador de la Serra Grossa</li>
+                    <li>Área recreativa El Pinaret</li>
+                    <li>Antiguo camino de herradura</li>
+                </ul>
+
+                <h2>Detalles técnicos</h2>
+                <ul>
+                    <li>Distancia: 28.3 km</li>
+                    <li>Desnivel positivo: 850m</li>
+                    <li>Dificultad: Alta</li>
+                    <li>Tiempo estimado: 4-5 horas</li>
+                </ul>
+
+                <h2>Recomendaciones</h2>
+                <ul>
+                    <li>Experiencia en MTB necesaria</li>
+                    <li>Llevar herramientas básicas</li>
+                    <li>GPS recomendado</li>
+                    <li>Salir temprano en verano</li>
+                </ul>
+
+                <p>Track en Wikiloc: <a href="https://www.wikiloc.com/mountain-biking-trails/serra-grossa-xativa-15692431" target="_blank">Ver ruta completa</a></p>
+            ]]></content:encoded>
+            <excerpt:encoded><![CDATA[Aventúrate en esta desafiante ruta por la Serra Grossa, perfecta para amantes del mountain bike que buscan emociones fuertes.]]></excerpt:encoded>
+            <wp:post_id>11</wp:post_id>
+            <wp:post_date>2023-12-14 11:00:00</wp:post_date>
+            <wp:post_date_gmt>2023-12-14 11:00:00</wp:post_date_gmt>
+            <wp:status>publish</wp:status>
+            <wp:post_type>xativa_route</wp:post_type>
+            <wp:postmeta>
+                <wp:meta_key>distance</wp:meta_key>
+                <wp:meta_value><![CDATA[28.3]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>difficulty</wp:meta_key>
+                <wp:meta_value><![CDATA[hard]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>wikiloc_url</wp:meta_key>
+                <wp:meta_value><![CDATA[https://www.wikiloc.com/mountain-biking-trails/serra-grossa-xativa-15692431]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_thumbnail_id</wp:meta_key>
+                <wp:meta_value><![CDATA[201]]></wp:meta_value>
+            </wp:postmeta>
+        </item>
+
+        <!-- Ruta 3: Valle de Bixquert -->
+        <item>
+            <title><![CDATA[Ruta Valle de Bixquert]]></title>
+            <link>http://paraiso.test/xativa_route/ruta-valle-bixquert</link>
+            <pubDate>Thu, 14 Dec 2023 12:00:00 +0000</pubDate>
+            <dc:creator><![CDATA[admin]]></dc:creator>
+            <guid isPermaLink="false">http://paraiso.test/?post_type=xativa_route&#038;p=12</guid>
+            <description></description>
+            <content:encoded><![CDATA[
+                <p>Un recorrido familiar por el pintoresco Valle de Bixquert, perfecto para iniciarse en el ciclismo de montaña.</p>
+
+                <h2>Descripción de la ruta</h2>
+                <p>Ruta circular que recorre el Valle de Bixquert por caminos bien acondicionados. Ideal para familias y principiantes que quieren disfrutar de la naturaleza sin grandes exigencias técnicas.</p>
+
+                <h2>Puntos de interés</h2>
+                <ul>
+                    <li>Ermita de Bixquert</li>
+                    <li>Fuente del Quintanar</li>
+                    <li>Mirador del Valle</li>
+                    <li>Antiguas casas de campo</li>
+                </ul>
+
+                <h2>Detalles técnicos</h2>
+                <ul>
+                    <li>Distancia: 15.7 km</li>
+                    <li>Desnivel positivo: 280m</li>
+                    <li>Dificultad: Baja</li>
+                    <li>Tiempo estimado: 2-3 horas</li>
+                </ul>
+
+                <h2>Recomendaciones</h2>
+                <ul>
+                    <li>Ruta ideal para principiantes</li>
+                    <li>Múltiples puntos de descanso</li>
+                    <li>Llevar cámara fotográfica</li>
+                    <li>Perfecta para hacer en familia</li>
+                </ul>
+
+                <p>Track en Wikiloc: <a href="https://www.wikiloc.com/mountain-biking-trails/vall-de-bixquert-xativa-16234567" target="_blank">Ver ruta completa</a></p>
+            ]]></content:encoded>
+            <excerpt:encoded><![CDATA[Disfruta de un agradable paseo en bicicleta por el Valle de Bixquert, una ruta perfecta para toda la familia.]]></excerpt:encoded>
+            <wp:post_id>12</wp:post_id>
+            <wp:post_date>2023-12-14 12:00:00</wp:post_date>
+            <wp:post_date_gmt>2023-12-14 12:00:00</wp:post_date_gmt>
+            <wp:status>publish</wp:status>
+            <wp:post_type>xativa_route</wp:post_type>
+            <wp:postmeta>
+                <wp:meta_key>distance</wp:meta_key>
+                <wp:meta_value><![CDATA[15.7]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>difficulty</wp:meta_key>
+                <wp:meta_value><![CDATA[easy]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>wikiloc_url</wp:meta_key>
+                <wp:meta_value><![CDATA[https://www.wikiloc.com/mountain-biking-trails/vall-de-bixquert-xativa-16234567]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_thumbnail_id</wp:meta_key>
+                <wp:meta_value><![CDATA[202]]></wp:meta_value>
+            </wp:postmeta>
+        </item>
+    </channel>
+</rss> 

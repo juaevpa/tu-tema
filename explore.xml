@@ -1,0 +1,626 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0"
+    xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
+    xmlns:content="http://purl.org/rss/1.0/modules/content/"
+    xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:wp="http://wordpress.org/export/1.2/">
+    <channel>
+        <title>Xàtiva Explore</title>
+        <link>http://paraiso.test</link>
+        <description>Lugares y servicios de Xàtiva</description>
+        <pubDate>Thu, 14 Dec 2023 12:00:00 +0000</pubDate>
+        <language>es-ES</language>
+        <wp:wxr_version>1.2</wp:wxr_version>
+        <wp:base_site_url>http://paraiso.test</wp:base_site_url>
+        <wp:base_blog_url>http://paraiso.test</wp:base_blog_url>
+
+        <!-- Imágenes -->
+        <item>
+            <title>Colegiata Xàtiva</title>
+            <link>http://paraiso.test/wp-content/uploads/2023/12/colegiata.jpg</link>
+            <pubDate>Thu, 14 Dec 2023 10:00:00 +0000</pubDate>
+            <dc:creator><![CDATA[admin]]></dc:creator>
+            <guid isPermaLink="false">https://upload.wikimedia.org/wikipedia/commons/8/89/Colegiata_de_Santa_Mar%C3%ADa_de_J%C3%A1tiva.jpg</guid>
+            <wp:post_id>300</wp:post_id>
+            <wp:post_type>attachment</wp:post_type>
+            <wp:attachment_url>http://paraiso.test/wp-content/uploads/2023/12/colegiata.jpg</wp:attachment_url>
+        </item>
+
+        <item>
+            <title>Almodí Xàtiva</title>
+            <link>http://paraiso.test/wp-content/uploads/2023/12/almodi.jpg</link>
+            <pubDate>Thu, 14 Dec 2023 10:01:00 +0000</pubDate>
+            <dc:creator><![CDATA[admin]]></dc:creator>
+            <guid isPermaLink="false">https://upload.wikimedia.org/wikipedia/commons/b/b0/Almod%C3%AD_de_X%C3%A0tiva.jpg</guid>
+            <wp:post_id>301</wp:post_id>
+            <wp:post_type>attachment</wp:post_type>
+            <wp:attachment_url>http://paraiso.test/wp-content/uploads/2023/12/almodi.jpg</wp:attachment_url>
+        </item>
+
+        <item>
+            <title>Fira Agost</title>
+            <link>http://paraiso.test/wp-content/uploads/2023/12/fira.jpg</link>
+            <pubDate>Thu, 14 Dec 2023 10:02:00 +0000</pubDate>
+            <dc:creator><![CDATA[admin]]></dc:creator>
+            <guid isPermaLink="false">https://upload.wikimedia.org/wikipedia/commons/c/c0/Fira_d%27Agost_de_X%C3%A0tiva.jpg</guid>
+            <wp:post_id>302</wp:post_id>
+            <wp:post_type>attachment</wp:post_type>
+            <wp:attachment_url>http://paraiso.test/wp-content/uploads/2023/12/fira.jpg</wp:attachment_url>
+        </item>
+
+        <item>
+            <title>Arròs al Forn</title>
+            <link>http://paraiso.test/wp-content/uploads/2023/12/arros-forn.jpg</link>
+            <pubDate>Thu, 14 Dec 2023 10:03:00 +0000</pubDate>
+            <dc:creator><![CDATA[admin]]></dc:creator>
+            <guid isPermaLink="false">https://upload.wikimedia.org/wikipedia/commons/e/e5/Arr%C3%B2s_al_forn.jpg</guid>
+            <wp:post_id>303</wp:post_id>
+            <wp:post_type>attachment</wp:post_type>
+            <wp:attachment_url>http://paraiso.test/wp-content/uploads/2023/12/arros-forn.jpg</wp:attachment_url>
+        </item>
+
+        <!-- Más imágenes para monumentos -->
+        <item>
+            <title>Palau Alarcó</title>
+            <link>http://paraiso.test/wp-content/uploads/2023/12/palau-alarco.jpg</link>
+            <pubDate>Thu, 14 Dec 2023 10:04:00 +0000</pubDate>
+            <dc:creator><![CDATA[admin]]></dc:creator>
+            <guid isPermaLink="false">https://upload.wikimedia.org/wikipedia/commons/a/a1/Palau_Alarc%C3%B3_X%C3%A0tiva.jpg</guid>
+            <wp:post_id>304</wp:post_id>
+            <wp:post_type>attachment</wp:post_type>
+            <wp:attachment_url>http://paraiso.test/wp-content/uploads/2023/12/palau-alarco.jpg</wp:attachment_url>
+        </item>
+
+        <item>
+            <title>Ermita Sant Feliu</title>
+            <link>http://paraiso.test/wp-content/uploads/2023/12/sant-feliu.jpg</link>
+            <pubDate>Thu, 14 Dec 2023 10:05:00 +0000</pubDate>
+            <dc:creator><![CDATA[admin]]></dc:creator>
+            <guid isPermaLink="false">https://upload.wikimedia.org/wikipedia/commons/b/b2/Ermita_de_Sant_Feliu_de_X%C3%A0tiva.jpg</guid>
+            <wp:post_id>305</wp:post_id>
+            <wp:post_type>attachment</wp:post_type>
+            <wp:attachment_url>http://paraiso.test/wp-content/uploads/2023/12/sant-feliu.jpg</wp:attachment_url>
+        </item>
+
+        <!-- Imágenes para naturaleza -->
+        <item>
+            <title>Sierra Vernissa</title>
+            <link>http://paraiso.test/wp-content/uploads/2023/12/sierra-vernissa.jpg</link>
+            <pubDate>Thu, 14 Dec 2023 10:06:00 +0000</pubDate>
+            <dc:creator><![CDATA[admin]]></dc:creator>
+            <guid isPermaLink="false">https://upload.wikimedia.org/wikipedia/commons/c/c3/Serra_Vernissa_X%C3%A0tiva.jpg</guid>
+            <wp:post_id>306</wp:post_id>
+            <wp:post_type>attachment</wp:post_type>
+            <wp:attachment_url>http://paraiso.test/wp-content/uploads/2023/12/sierra-vernissa.jpg</wp:attachment_url>
+        </item>
+
+        <!-- Categorías -->
+        <wp:term>
+            <wp:term_id>20</wp:term_id>
+            <wp:term_taxonomy>explore_category</wp:term_taxonomy>
+            <wp:term_slug>alojamientos</wp:term_slug>
+            <wp:term_name><![CDATA[Alojamientos]]></wp:term_name>
+            <wp:term_description><![CDATA[]]></wp:term_description>
+        </wp:term>
+
+        <wp:term>
+            <wp:term_id>21</wp:term_id>
+            <wp:term_taxonomy>explore_category</wp:term_taxonomy>
+            <wp:term_slug>cultura</wp:term_slug>
+            <wp:term_name><![CDATA[Cultura]]></wp:term_name>
+            <wp:term_description><![CDATA[Cultura y patrimonio de Xàtiva]]></wp:term_description>
+        </wp:term>
+
+        <wp:term>
+            <wp:term_id>22</wp:term_id>
+            <wp:term_taxonomy>explore_category</wp:term_taxonomy>
+            <wp:term_slug>eventos</wp:term_slug>
+            <wp:term_name><![CDATA[Eventos]]></wp:term_name>
+            <wp:term_description><![CDATA[]]></wp:term_description>
+        </wp:term>
+
+        <wp:term>
+            <wp:term_id>23</wp:term_id>
+            <wp:term_taxonomy>explore_category</wp:term_taxonomy>
+            <wp:term_slug>gastronomia</wp:term_slug>
+            <wp:term_name><![CDATA[Gastronomía]]></wp:term_name>
+            <wp:term_description><![CDATA[Gastronomía local de Xàtiva]]></wp:term_description>
+        </wp:term>
+
+        <wp:term>
+            <wp:term_id>24</wp:term_id>
+            <wp:term_taxonomy>explore_category</wp:term_taxonomy>
+            <wp:term_slug>historia</wp:term_slug>
+            <wp:term_name><![CDATA[Historia]]></wp:term_name>
+            <wp:term_description><![CDATA[Historia local de Xàtiva]]></wp:term_description>
+        </wp:term>
+
+        <wp:term>
+            <wp:term_id>25</wp:term_id>
+            <wp:term_taxonomy>explore_category</wp:term_taxonomy>
+            <wp:term_slug>monumentos</wp:term_slug>
+            <wp:term_name><![CDATA[Monumentos]]></wp:term_name>
+            <wp:term_description><![CDATA[]]></wp:term_description>
+        </wp:term>
+
+        <wp:term>
+            <wp:term_id>26</wp:term_id>
+            <wp:term_taxonomy>explore_category</wp:term_taxonomy>
+            <wp:term_slug>naturaleza</wp:term_slug>
+            <wp:term_name><![CDATA[Naturaleza]]></wp:term_name>
+            <wp:term_description><![CDATA[Entorno natural de Xàtiva]]></wp:term_description>
+        </wp:term>
+
+        <wp:term>
+            <wp:term_id>27</wp:term_id>
+            <wp:term_taxonomy>explore_category</wp:term_taxonomy>
+            <wp:term_slug>restaurantes</wp:term_slug>
+            <wp:term_name><![CDATA[Restaurantes]]></wp:term_name>
+            <wp:term_description><![CDATA[]]></wp:term_description>
+        </wp:term>
+
+        <!-- Restaurantes -->
+        <item>
+            <title><![CDATA[Casa la Abuela]]></title>
+            <link>http://paraiso.test/xativa_explore/casa-la-abuela</link>
+            <pubDate>Thu, 14 Dec 2023 10:00:00 +0000</pubDate>
+            <dc:creator><![CDATA[admin]]></dc:creator>
+            <guid isPermaLink="false">http://paraiso.test/?post_type=xativa_explore&#038;p=20</guid>
+            <content:encoded><![CDATA[
+                <p>Restaurante tradicional valenciano ubicado en el centro histórico de Xàtiva. Especializado en arroces y platos típicos de la zona.</p>
+
+                <h2>Especialidades</h2>
+                <ul>
+                    <li>Arroz al horno</li>
+                    <li>Paella valenciana</li>
+                    <li>Cocas de escalivada</li>
+                </ul>
+
+                <h2>Información práctica</h2>
+                <ul>
+                    <li><strong>Dirección:</strong> Calle Montcada, 12</li>
+                    <li><strong>Teléfono:</strong> 96 XXX XXX</li>
+                    <li><strong>Horario:</strong> 13:00-16:00 y 20:00-23:00</li>
+                    <li><strong>Precio medio:</strong> 25-30€</li>
+                </ul>
+            ]]></content:encoded>
+            <wp:post_type>xativa_explore</wp:post_type>
+            <wp:status>publish</wp:status>
+            <wp:term_relationships>
+                <wp:term_taxonomy>explore_category</wp:term_taxonomy>
+                <wp:term_slug>restaurantes</wp:term_slug>
+            </wp:term_relationships>
+            <wp:postmeta>
+                <wp:meta_key>_thumbnail_id</wp:meta_key>
+                <wp:meta_value><![CDATA[303]]></wp:meta_value>
+            </wp:postmeta>
+        </item>
+
+        <item>
+            <title><![CDATA[Mont-Sant]]></title>
+            <link>http://paraiso.test/xativa_explore/mont-sant</link>
+            <pubDate>Thu, 14 Dec 2023 10:01:00 +0000</pubDate>
+            <dc:creator><![CDATA[admin]]></dc:creator>
+            <guid isPermaLink="false">http://paraiso.test/?post_type=xativa_explore&#038;p=21</guid>
+            <content:encoded><![CDATA[
+                <p>Restaurante de alta cocina mediterránea con estrella Michelin, ubicado en un entorno privilegiado con vistas al castillo.</p>
+
+                <h2>Especialidades</h2>
+                <ul>
+                    <li>Cocina de autor</li>
+                    <li>Menú degustación</li>
+                    <li>Carta de vinos premium</li>
+                </ul>
+
+                <h2>Información práctica</h2>
+                <ul>
+                    <li><strong>Dirección:</strong> Subida al Castillo, s/n</li>
+                    <li><strong>Teléfono:</strong> 96 XXX XXX</li>
+                    <li><strong>Horario:</strong> 13:30-15:30 y 20:30-22:30</li>
+                    <li><strong>Precio medio:</strong> 60-80€</li>
+                </ul>
+            ]]></content:encoded>
+            <wp:post_type>xativa_explore</wp:post_type>
+            <wp:status>publish</wp:status>
+            <wp:term_relationships>
+                <wp:term_taxonomy>explore_category</wp:term_taxonomy>
+                <wp:term_slug>restaurantes</wp:term_slug>
+            </wp:term_relationships>
+        </item>
+
+        <!-- Alojamientos -->
+        <item>
+            <title><![CDATA[Hotel Casa Cigroner]]></title>
+            <link>http://paraiso.test/xativa_explore/hotel-casa-cigroner</link>
+            <pubDate>Thu, 14 Dec 2023 10:02:00 +0000</pubDate>
+            <dc:creator><![CDATA[admin]]></dc:creator>
+            <guid isPermaLink="false">http://paraiso.test/?post_type=xativa_explore&#038;p=22</guid>
+            <content:encoded><![CDATA[
+                <p>Hotel boutique en un palacete del siglo XVIII, completamente restaurado y adaptado para ciclistas.</p>
+
+                <h2>Servicios</h2>
+                <ul>
+                    <li>Guarda bicicletas seguro</li>
+                    <li>Taller básico de reparación</li>
+                    <li>Desayuno especial para deportistas</li>
+                    <li>Wifi gratuito</li>
+                </ul>
+
+                <h2>Información práctica</h2>
+                <ul>
+                    <li><strong>Dirección:</strong> Plaza San Francisco, 5</li>
+                    <li><strong>Teléfono:</strong> 96 XXX XXX</li>
+                    <li><strong>Precio:</strong> Desde 80€/noche</li>
+                    <li><strong>Categoría:</strong> 4 estrellas</li>
+                </ul>
+            ]]></content:encoded>
+            <wp:post_type>xativa_explore</wp:post_type>
+            <wp:status>publish</wp:status>
+            <wp:term_relationships>
+                <wp:term_taxonomy>explore_category</wp:term_taxonomy>
+                <wp:term_slug>alojamientos</wp:term_slug>
+            </wp:term_relationships>
+        </item>
+
+        <!-- Monumentos -->
+        <item>
+            <title><![CDATA[Real Monasterio de Santa Clara]]></title>
+            <link>http://paraiso.test/xativa_explore/monasterio-santa-clara</link>
+            <pubDate>Thu, 14 Dec 2023 10:03:00 +0000</pubDate>
+            <dc:creator><![CDATA[admin]]></dc:creator>
+            <guid isPermaLink="false">http://paraiso.test/?post_type=xativa_explore&#038;p=23</guid>
+            <content:encoded><![CDATA[
+                <p>Monasterio gótico del siglo XIII, uno de los edificios religiosos más importantes de Xàtiva.</p>
+
+                <h2>Historia</h2>
+                <p>Fundado en 1325 por Saurina d'Entença, ha sido testigo de importantes acontecimientos históricos y conserva valiosas obras de arte.</p>
+
+                <h2>Información práctica</h2>
+                <ul>
+                    <li><strong>Dirección:</strong> Plaza Santa Clara</li>
+                    <li><strong>Horario visitas:</strong> 10:00-14:00 y 16:00-19:00</li>
+                    <li><strong>Entrada:</strong> 3€</li>
+                </ul>
+            ]]></content:encoded>
+            <wp:post_type>xativa_explore</wp:post_type>
+            <wp:status>publish</wp:status>
+            <wp:term_relationships>
+                <wp:term_taxonomy>explore_category</wp:term_taxonomy>
+                <wp:term_slug>monumentos</wp:term_slug>
+            </wp:term_relationships>
+            <wp:postmeta>
+                <wp:meta_key>_thumbnail_id</wp:meta_key>
+                <wp:meta_value><![CDATA[300]]></wp:meta_value>
+            </wp:postmeta>
+        </item>
+
+        <!-- Gastronomía -->
+        <item>
+            <title><![CDATA[Arròs al forn]]></title>
+            <link>http://paraiso.test/xativa_explore/arros-al-forn</link>
+            <pubDate>Thu, 14 Dec 2023 10:04:00 +0000</pubDate>
+            <dc:creator><![CDATA[admin]]></dc:creator>
+            <guid isPermaLink="false">http://paraiso.test/?post_type=xativa_explore&#038;p=24</guid>
+            <content:encoded><![CDATA[
+                <p>El arroz al horno es uno de los platos más típicos de Xàtiva, cocinado tradicionalmente en cazuela de barro.</p>
+
+                <h2>Ingredientes principales</h2>
+                <ul>
+                    <li>Arroz bomba</li>
+                    <li>Garbanzos</li>
+                    <li>Costilla de cerdo</li>
+                    <li>Morcilla</li>
+                    <li>Patatas</li>
+                    <li>Tomates</li>
+                </ul>
+
+                <h2>Dónde probarlo</h2>
+                <ul>
+                    <li>Casa la Abuela</li>
+                    <li>Restaurant Castell</li>
+                    <li>Casa Tomás</li>
+                </ul>
+            ]]></content:encoded>
+            <wp:post_type>xativa_explore</wp:post_type>
+            <wp:status>publish</wp:status>
+            <wp:term_relationships>
+                <wp:term_taxonomy>explore_category</wp:term_taxonomy>
+                <wp:term_slug>gastronomia</wp:term_slug>
+            </wp:term_relationships>
+            <wp:postmeta>
+                <wp:meta_key>_thumbnail_id</wp:meta_key>
+                <wp:meta_value><![CDATA[303]]></wp:meta_value>
+            </wp:postmeta>
+        </item>
+
+        <!-- Eventos -->
+        <item>
+            <title><![CDATA[Fira d'Agost]]></title>
+            <link>http://paraiso.test/xativa_explore/fira-agost</link>
+            <pubDate>Thu, 14 Dec 2023 10:05:00 +0000</pubDate>
+            <dc:creator><![CDATA[admin]]></dc:creator>
+            <guid isPermaLink="false">http://paraiso.test/?post_type=xativa_explore&#038;p=25</guid>
+            <content:encoded><![CDATA[
+                <p>La Fira d'Agost es la feria más antigua de España, declarada de Interés Turístico Nacional.</p>
+
+                <h2>Historia</h2>
+                <p>Concedida por Jaime I en 1250, la feria ha evolucionado hasta convertirse en uno de los eventos más importantes de la Comunidad Valenciana.</p>
+
+                <h2>Actividades principales</h2>
+                <ul>
+                    <li>Mercado medieval</li>
+                    <li>Conciertos</li>
+                    <li>Exposiciones</li>
+                    <li>Actividades deportivas</li>
+                    <li>Fuegos artificiales</li>
+                </ul>
+
+                <h2>Información práctica</h2>
+                <ul>
+                    <li><strong>Fecha:</strong> 15-20 de agosto</li>
+                    <li><strong>Ubicación:</strong> Centro histórico</li>
+                    <li><strong>Actividades:</strong> Mayoría gratuitas</li>
+                </ul>
+            ]]></content:encoded>
+            <wp:post_type>xativa_explore</wp:post_type>
+            <wp:status>publish</wp:status>
+            <wp:term_relationships>
+                <wp:term_taxonomy>explore_category</wp:term_taxonomy>
+                <wp:term_slug>eventos</wp:term_slug>
+            </wp:term_relationships>
+            <wp:postmeta>
+                <wp:meta_key>_thumbnail_id</wp:meta_key>
+                <wp:meta_value><![CDATA[302]]></wp:meta_value>
+            </wp:postmeta>
+        </item>
+
+        <!-- Más monumentos -->
+        <item>
+            <title><![CDATA[Colegiata Basílica de Santa María]]></title>
+            <link>http://paraiso.test/xativa_explore/colegiata-santa-maria</link>
+            <pubDate>Thu, 14 Dec 2023 10:06:00 +0000</pubDate>
+            <dc:creator><![CDATA[admin]]></dc:creator>
+            <guid isPermaLink="false">http://paraiso.test/?post_type=xativa_explore&#038;p=26</guid>
+            <content:encoded><![CDATA[
+                <p>La Seu de Xàtiva, como se la conoce popularmente, es uno de los mejores ejemplos de arquitectura religiosa valenciana.</p>
+
+                <h2>Historia</h2>
+                <p>Construida entre los siglos XVI y XVIII sobre una antigua mezquita, combina estilos gótico, renacentista y barroco.</p>
+
+                <h2>Puntos de interés</h2>
+                <ul>
+                    <li>Retablo mayor barroco</li>
+                    <li>Capilla de los Borja</li>
+                    <li>Museo de la Colegiata</li>
+                    <li>Campanario renacentista</li>
+                </ul>
+
+                <h2>Información práctica</h2>
+                <ul>
+                    <li><strong>Dirección:</strong> Plaza de la Seu</li>
+                    <li><strong>Horario:</strong> 10:00-14:00 y 17:00-20:00</li>
+                    <li><strong>Entrada:</strong> 4€ (incluye museo)</li>
+                </ul>
+            ]]></content:encoded>
+            <wp:post_type>xativa_explore</wp:post_type>
+            <wp:status>publish</wp:status>
+            <wp:term_relationships>
+                <wp:term_taxonomy>explore_category</wp:term_taxonomy>
+                <wp:term_slug>monumentos</wp:term_slug>
+            </wp:term_relationships>
+        </item>
+
+        <item>
+            <title><![CDATA[Almodí]]></title>
+            <link>http://paraiso.test/xativa_explore/almodi</link>
+            <pubDate>Thu, 14 Dec 2023 10:07:00 +0000</pubDate>
+            <dc:creator><![CDATA[admin]]></dc:creator>
+            <guid isPermaLink="false">http://paraiso.test/?post_type=xativa_explore&#038;p=27</guid>
+            <content:encoded><![CDATA[
+                <p>Antiguo almacén de grano del siglo XVI, hoy convertido en Museo de Bellas Artes.</p>
+
+                <h2>Colección</h2>
+                <ul>
+                    <li>Pintura gótica y renacentista</li>
+                    <li>Retrato de Felipe V boca abajo</li>
+                    <li>Arqueología local</li>
+                    <li>Exposiciones temporales</li>
+                </ul>
+
+                <h2>Información práctica</h2>
+                <ul>
+                    <li><strong>Dirección:</strong> Plaza del Almodí</li>
+                    <li><strong>Horario:</strong> Martes a domingo, 10:00-14:00</li>
+                    <li><strong>Entrada:</strong> 2€ (gratis domingos)</li>
+                </ul>
+            ]]></content:encoded>
+            <wp:post_type>xativa_explore</wp:post_type>
+            <wp:status>publish</wp:status>
+            <wp:term_relationships>
+                <wp:term_taxonomy>explore_category</wp:term_taxonomy>
+                <wp:term_slug>monumentos</wp:term_slug>
+            </wp:term_relationships>
+            <wp:postmeta>
+                <wp:meta_key>_thumbnail_id</wp:meta_key>
+                <wp:meta_value><![CDATA[301]]></wp:meta_value>
+            </wp:postmeta>
+        </item>
+
+        <!-- Más alojamientos -->
+        <item>
+            <title><![CDATA[Hotel Mont-Sant]]></title>
+            <link>http://paraiso.test/xativa_explore/hotel-mont-sant</link>
+            <pubDate>Thu, 14 Dec 2023 10:08:00 +0000</pubDate>
+            <dc:creator><![CDATA[admin]]></dc:creator>
+            <guid isPermaLink="false">http://paraiso.test/?post_type=xativa_explore&#038;p=28</guid>
+            <content:encoded><![CDATA[
+                <p>Hotel histórico con vistas privilegiadas al castillo y la ciudad, especialmente adaptado para ciclistas.</p>
+
+                <h2>Servicios para ciclistas</h2>
+                <ul>
+                    <li>Garaje seguro para bicicletas</li>
+                    <li>Taller de reparación</li>
+                    <li>Servicio de lavandería express</li>
+                    <li>Menús especiales para deportistas</li>
+                    <li>Información sobre rutas</li>
+                </ul>
+
+                <h2>Información práctica</h2>
+                <ul>
+                    <li><strong>Dirección:</strong> Subida al Castillo</li>
+                    <li><strong>Teléfono:</strong> 96 XXX XXX</li>
+                    <li><strong>Precio:</strong> Desde 90€/noche</li>
+                    <li><strong>Servicios:</strong> Restaurante, piscina, parking</li>
+                </ul>
+            ]]></content:encoded>
+            <wp:post_type>xativa_explore</wp:post_type>
+            <wp:status>publish</wp:status>
+            <wp:term_relationships>
+                <wp:term_taxonomy>explore_category</wp:term_taxonomy>
+                <wp:term_slug>alojamientos</wp:term_slug>
+            </wp:term_relationships>
+        </item>
+
+        <!-- Más gastronomía -->
+        <item>
+            <title><![CDATA[Arnadí]]></title>
+            <link>http://paraiso.test/xativa_explore/arnadi</link>
+            <pubDate>Thu, 14 Dec 2023 10:09:00 +0000</pubDate>
+            <dc:creator><![CDATA[admin]]></dc:creator>
+            <guid isPermaLink="false">http://paraiso.test/?post_type=xativa_explore&#038;p=29</guid>
+            <content:encoded><![CDATA[
+                <p>Dulce típico de Xàtiva, elaborado con calabaza, almendra y azúcar, con forma cónica característica.</p>
+
+                <h2>Historia</h2>
+                <p>Postre de origen medieval, típico de la Semana Santa setabense. Su receta se ha transmitido de generación en generación.</p>
+
+                <h2>Dónde comprarlo</h2>
+                <ul>
+                    <li>Pastelería San Jorge</li>
+                    <li>Horno Santo Domingo</li>
+                    <li>Pastelería Pla</li>
+                </ul>
+
+                <h2>Curiosidades</h2>
+                <p>Es uno de los dulces más antiguos documentados en la gastronomía valenciana, mencionado ya en recetarios del siglo XV.</p>
+            ]]></content:encoded>
+            <wp:post_type>xativa_explore</wp:post_type>
+            <wp:status>publish</wp:status>
+            <wp:term_relationships>
+                <wp:term_taxonomy>explore_category</wp:term_taxonomy>
+                <wp:term_slug>gastronomia</wp:term_slug>
+            </wp:term_relationships>
+        </item>
+
+        <!-- Más eventos -->
+        <item>
+            <title><![CDATA[Semana Santa de Xàtiva]]></title>
+            <link>http://paraiso.test/xativa_explore/semana-santa</link>
+            <pubDate>Thu, 14 Dec 2023 10:10:00 +0000</pubDate>
+            <dc:creator><![CDATA[admin]]></dc:creator>
+            <guid isPermaLink="false">http://paraiso.test/?post_type=xativa_explore&#038;p=30</guid>
+            <content:encoded><![CDATA[
+                <p>Declarada de Interés Turístico Autonómico, la Semana Santa de Xàtiva destaca por sus procesiones y tradiciones únicas.</p>
+
+                <h2>Eventos principales</h2>
+                <ul>
+                    <li>Procesión del Domingo de Ramos</li>
+                    <li>Procesión del Silencio</li>
+                    <li>Santo Entierro</li>
+                    <li>Encuentro Glorioso</li>
+                </ul>
+
+                <h2>Tradiciones gastronómicas</h2>
+                <ul>
+                    <li>Arnadí</li>
+                    <li>Mona de Pascua</li>
+                    <li>Panquemado</li>
+                </ul>
+
+                <h2>Información práctica</h2>
+                <ul>
+                    <li><strong>Fecha:</strong> Según calendario litúrgico</li>
+                    <li><strong>Ubicación:</strong> Centro histórico</li>
+                    <li><strong>Duración:</strong> 8 días</li>
+                </ul>
+            ]]></content:encoded>
+            <wp:post_type>xativa_explore</wp:post_type>
+            <wp:status>publish</wp:status>
+            <wp:term_relationships>
+                <wp:term_taxonomy>explore_category</wp:term_taxonomy>
+                <wp:term_slug>eventos</wp:term_slug>
+            </wp:term_relationships>
+        </item>
+
+        <item>
+            <title><![CDATA[Corpus Christi]]></title>
+            <link>http://paraiso.test/xativa_explore/corpus-christi</link>
+            <pubDate>Thu, 14 Dec 2023 10:11:00 +0000</pubDate>
+            <dc:creator><![CDATA[admin]]></dc:creator>
+            <guid isPermaLink="false">http://paraiso.test/?post_type=xativa_explore&#038;p=31</guid>
+            <content:encoded><![CDATA[
+                <p>Una de las celebraciones más antiguas y tradicionales de Xàtiva, con elementos únicos como los gigantes y cabezudos históricos.</p>
+
+                <h2>Elementos tradicionales</h2>
+                <ul>
+                    <li>Gigantes y Cabezudos</li>
+                    <li>Danzas tradicionales</li>
+                    <li>Procesión histórica</li>
+                    <li>Decoración floral</li>
+                </ul>
+
+                <h2>Actividades</h2>
+                <ul>
+                    <li>Volteo de campanas</li>
+                    <li>Danzas populares</li>
+                    <li>Procesión del Corpus</li>
+                    <li>Exposición de altares</li>
+                </ul>
+
+                <h2>Información práctica</h2>
+                <ul>
+                    <li><strong>Fecha:</strong> Junio (fecha variable)</li>
+                    <li><strong>Duración:</strong> 3 días</li>
+                    <li><strong>Ubicación:</strong> Centro histórico</li>
+                </ul>
+            ]]></content:encoded>
+            <wp:post_type>xativa_explore</wp:post_type>
+            <wp:status>publish</wp:status>
+            <wp:term_relationships>
+                <wp:term_taxonomy>explore_category</wp:term_taxonomy>
+                <wp:term_slug>eventos</wp:term_slug>
+            </wp:term_relationships>
+        </item>
+
+        <!-- Nuevos monumentos -->
+        <item>
+            <title><![CDATA[Palau Alarcó]]></title>
+            <link>http://paraiso.test/xativa_explore/palau-alarco</link>
+            <pubDate>Thu, 14 Dec 2023 10:12:00 +0000</pubDate>
+            <dc:creator><![CDATA[admin]]></dc:creator>
+            <guid isPermaLink="false">http://paraiso.test/?post_type=xativa_explore&#038;p=32</guid>
+            <content:encoded><![CDATA[
+                <p>Palacio gótico del siglo XV, ejemplo perfecto de la arquitectura civil medieval valenciana.</p>
+
+                <h2>Historia</h2>
+                <p>Construido por la familia Alarcó, una de las más influyentes de la Xàtiva medieval...</p>
+
+                <!-- Resto del contenido... -->
+            ]]></content:encoded>
+            <wp:post_type>xativa_explore</wp:post_type>
+            <wp:status>publish</wp:status>
+            <wp:term_relationships>
+                <wp:term_taxonomy>explore_category</wp:term_taxonomy>
+                <wp:term_slug>monumentos</wp:term_slug>
+            </wp:term_relationships>
+            <wp:postmeta>
+                <wp:meta_key>_thumbnail_id</wp:meta_key>
+                <wp:meta_value><![CDATA[304]]></wp:meta_value>
+            </wp:postmeta>
+        </item>
+
+        <!-- Y así sucesivamente con más posts... -->
+
+    </channel>
+</rss> 

@@ -1,69 +1,42 @@
 <?php
 get_header();
 
-// Obtener rutas destacadas
-$featured_routes = new WP_Query(array(
-    'post_type' => 'xativa_route',
-    'posts_per_page' => 3,
-    'meta_query' => array(
-        array(
-            'key' => 'featured',
-            'value' => '1',
-            'compare' => '='
-        )
-    )
-));
-
-// Obtener términos de las taxonomías para los filtros con argumentos específicos
-$difficulties = get_terms(array(
-    'taxonomy' => 'route_difficulty',
-    'hide_empty' => false
-));
-
-$types = get_terms(array(
-    'taxonomy' => 'route_type',
-    'hide_empty' => false
-));
-
-$sceneries = get_terms(array(
-    'taxonomy' => 'route_scenery',
-    'hide_empty' => false
-));
+// Obtener términos de las taxonomías para los filtros
+$difficulties = get_terms(['taxonomy' => 'route_difficulty']);
+$types = get_terms(['taxonomy' => 'route_type']);
+$sceneries = get_terms(['taxonomy' => 'route_scenery']);
 
 // Obtener rutas con filtros si existen
 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-$args = array(
+$args = [
     'post_type' => 'xativa_route',
     'posts_per_page' => 12,
     'paged' => $paged,
-);
+];
 
 // Aplicar filtros si existen
-if (!empty($_GET['difficulty'])) {
-    $args['tax_query'][] = array(
+if (isset($_GET['difficulty'])) {
+    $args['tax_query'][] = [
         'taxonomy' => 'route_difficulty',
         'field' => 'slug',
         'terms' => $_GET['difficulty'],
-        'operator' => 'IN'
-    );
+    ];
 }
 
-if (!empty($_GET['type'])) {
-    $args['tax_query'][] = array(
+if (isset($_GET['type'])) {
+    $args['tax_query'][] = [
         'taxonomy' => 'route_type',
         'field' => 'slug',
         'terms' => $_GET['type'],
-        'operator' => 'IN'
-    );
+    ];
 }
 
-if (!empty($_GET['scenery'])) {
-    $args['tax_query'][] = array(
+if (isset($_GET['scenery'])) {
+    $args['tax_query'][] = [
         'taxonomy' => 'route_scenery',
         'field' => 'slug',
         'terms' => $_GET['scenery'],
-        'operator' => 'IN'
-    );
+    ];
 }
 
 $routes_query = new WP_Query($args);
@@ -108,113 +81,74 @@ $routes_query = new WP_Query($args);
             </div>
         </div>
 
-        <!-- Rutas Destacadas -->
-        <?php if ($featured_routes->have_posts()) : ?>
-            <h2 class="text-[#0e141b] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">
-                <?php _e('Rutas destacadas', 'tu-tema'); ?>
-            </h2>
-            <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
-                <?php while ($featured_routes->have_posts()) : $featured_routes->the_post(); 
-                    $distance = get_field('distance');
-                    $permalink = get_permalink();
-                ?>
-                    <a href="<?php echo esc_url($permalink); ?>" class="group flex flex-col gap-3 pb-3 hover:opacity-90 transition-opacity">
-                        <?php if (has_post_thumbnail()) : ?>
-                            <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl group-hover:shadow-md transition-shadow"
-                                style="background-image: url('<?php echo get_the_post_thumbnail_url(get_the_ID(), 'medium'); ?>');">
-                            </div>
-                        <?php endif; ?>
-                        <div>
-                            <p class="text-[#0e141b] text-base font-medium leading-normal group-hover:text-[#1979e6] transition-colors"><?php the_title(); ?></p>
-                            <?php if ($distance) : ?>
-                                <p class="text-[#4e7097] text-sm font-normal leading-normal"><?php echo esc_html($distance); ?> km</p>
-                            <?php endif; ?>
-                        </div>
-                    </a>
-                <?php endwhile; wp_reset_postdata(); ?>
-            </div>
-        <?php endif; ?>
-
         <!-- Filtros -->
-        <form method="get" class="filter-form relative">
+        <form method="get" class="filter-form">
             <h3 class="text-[#0e141b] text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">
                 <?php _e('Filtros', 'tu-tema'); ?>
             </h3>
-            <div class="flex gap-3 p-3">
+            <div class="flex gap-3 p-3 overflow-x-hidden">
                 <!-- Dificultad -->
-                <?php if (!is_wp_error($difficulties) && !empty($difficulties)) : ?>
                 <div class="relative">
                     <button type="button" class="filter-dropdown-toggle flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#e7edf3] pl-4 pr-2">
-                        <p class="text-[#0e141b] text-sm font-medium leading-normal whitespace-nowrap"><?php _e('Dificultad', 'tu-tema'); ?></p>
+                        <p class="text-[#0e141b] text-sm font-medium leading-normal"><?php _e('Dificultad', 'tu-tema'); ?></p>
                         <div class="text-[#0e141b]">
-                            <i class="ph ph-caret-down text-xl"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                                <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                            </svg>
                         </div>
                     </button>
-                    <div class="filter-dropdown hidden absolute top-full left-0 mt-2 w-48 rounded-xl bg-white shadow-lg z-50">
-                        <div class="py-2">
-                            <?php foreach ($difficulties as $difficulty) : ?>
-                                <label class="flex items-center px-4 py-2 hover:bg-[#e7edf3] cursor-pointer">
-                                    <input type="checkbox" 
-                                           name="difficulty[]" 
-                                           value="<?php echo esc_attr($difficulty->slug); ?>"
-                                           <?php checked(isset($_GET['difficulty']) && in_array($difficulty->slug, (array)$_GET['difficulty'])); ?>>
-                                    <span class="ml-2"><?php echo esc_html($difficulty->name); ?></span>
-                                </label>
-                            <?php endforeach; ?>
-                        </div>
+                    <div class="filter-dropdown hidden absolute top-full left-0 mt-2 w-48 rounded-xl bg-white shadow-lg z-10">
+                        <?php foreach ($difficulties as $difficulty): ?>
+                            <label class="flex items-center px-4 py-2 hover:bg-[#e7edf3] cursor-pointer">
+                                <input type="checkbox" name="difficulty[]" value="<?php echo $difficulty->slug; ?>"
+                                       <?php checked(isset($_GET['difficulty']) && in_array($difficulty->slug, (array)$_GET['difficulty'])); ?>>
+                                <span class="ml-2"><?php echo $difficulty->name; ?></span>
+                            </label>
+                        <?php endforeach; ?>
                     </div>
                 </div>
-                <?php endif; ?>
 
                 <!-- Paisaje -->
-                <?php if (!is_wp_error($sceneries) && !empty($sceneries)) : ?>
                 <div class="relative">
                     <button type="button" class="filter-dropdown-toggle flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#e7edf3] pl-4 pr-2">
-                        <p class="text-[#0e141b] text-sm font-medium leading-normal whitespace-nowrap"><?php _e('Paisaje', 'tu-tema'); ?></p>
+                        <p class="text-[#0e141b] text-sm font-medium leading-normal"><?php _e('Paisaje', 'tu-tema'); ?></p>
                         <div class="text-[#0e141b]">
-                            <i class="ph ph-caret-down text-xl"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                                <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                            </svg>
                         </div>
                     </button>
-                    <div class="filter-dropdown hidden absolute top-full left-0 mt-2 w-48 rounded-xl bg-white shadow-lg z-50">
-                        <div class="py-2">
-                            <?php foreach ($sceneries as $scenery) : ?>
-                                <label class="flex items-center px-4 py-2 hover:bg-[#e7edf3] cursor-pointer">
-                                    <input type="checkbox" 
-                                           name="scenery[]" 
-                                           value="<?php echo esc_attr($scenery->slug); ?>"
-                                           <?php checked(isset($_GET['scenery']) && in_array($scenery->slug, (array)$_GET['scenery'])); ?>>
-                                    <span class="ml-2"><?php echo esc_html($scenery->name); ?></span>
-                                </label>
-                            <?php endforeach; ?>
-                        </div>
+                    <div class="filter-dropdown hidden absolute top-full left-0 mt-2 w-48 rounded-xl bg-white shadow-lg z-10">
+                        <?php foreach ($sceneries as $scenery): ?>
+                            <label class="flex items-center px-4 py-2 hover:bg-[#e7edf3] cursor-pointer">
+                                <input type="checkbox" name="scenery[]" value="<?php echo $scenery->slug; ?>"
+                                       <?php checked(isset($_GET['scenery']) && in_array($scenery->slug, (array)$_GET['scenery'])); ?>>
+                                <span class="ml-2"><?php echo $scenery->name; ?></span>
+                            </label>
+                        <?php endforeach; ?>
                     </div>
                 </div>
-                <?php endif; ?>
 
                 <!-- Tipo de ruta -->
-                <?php if (!is_wp_error($types) && !empty($types)) : ?>
                 <div class="relative">
                     <button type="button" class="filter-dropdown-toggle flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#e7edf3] pl-4 pr-2">
-                        <p class="text-[#0e141b] text-sm font-medium leading-normal whitespace-nowrap"><?php _e('Tipo de ruta', 'tu-tema'); ?></p>
+                        <p class="text-[#0e141b] text-sm font-medium leading-normal"><?php _e('Tipo de ruta', 'tu-tema'); ?></p>
                         <div class="text-[#0e141b]">
-                            <i class="ph ph-caret-down text-xl"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                                <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                            </svg>
                         </div>
                     </button>
-                    <div class="filter-dropdown hidden absolute top-full left-0 mt-2 w-48 rounded-xl bg-white shadow-lg z-50">
-                        <div class="py-2">
-                            <?php foreach ($types as $type) : ?>
-                                <label class="flex items-center px-4 py-2 hover:bg-[#e7edf3] cursor-pointer">
-                                    <input type="checkbox" 
-                                           name="type[]" 
-                                           value="<?php echo esc_attr($type->slug); ?>"
-                                           <?php checked(isset($_GET['type']) && in_array($type->slug, (array)$_GET['type'])); ?>>
-                                    <span class="ml-2"><?php echo esc_html($type->name); ?></span>
-                                </label>
-                            <?php endforeach; ?>
-                        </div>
+                    <div class="filter-dropdown hidden absolute top-full left-0 mt-2 w-48 rounded-xl bg-white shadow-lg z-10">
+                        <?php foreach ($types as $type): ?>
+                            <label class="flex items-center px-4 py-2 hover:bg-[#e7edf3] cursor-pointer">
+                                <input type="checkbox" name="type[]" value="<?php echo $type->slug; ?>"
+                                       <?php checked(isset($_GET['type']) && in_array($type->slug, (array)$_GET['type'])); ?>>
+                                <span class="ml-2"><?php echo $type->name; ?></span>
+                            </label>
+                        <?php endforeach; ?>
                     </div>
                 </div>
-                <?php endif; ?>
             </div>
 
             <!-- Botones de filtro -->
@@ -256,14 +190,14 @@ $routes_query = new WP_Query($args);
 
             <!-- Paginación -->
             <?php
-            echo paginate_links(array(
+            echo paginate_links([
                 'total' => $routes_query->max_num_pages,
                 'current' => $paged,
-                'prev_text' => '<i class="ph ph-caret-left text-xl"></i>',
-                'next_text' => '<i class="ph ph-caret-right text-xl"></i>',
+                'prev_text' => '<svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" fill="currentColor" viewBox="0 0 256 256"><path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"></path></svg>',
+                'next_text' => '<svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" fill="currentColor" viewBox="0 0 256 256"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path></svg>',
                 'type' => 'list',
                 'class' => 'pagination'
-            ));
+            ]);
             ?>
         <?php else: ?>
             <p class="text-center py-8"><?php _e('No se encontraron rutas.', 'tu-tema'); ?></p>

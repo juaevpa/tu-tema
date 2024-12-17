@@ -40,3 +40,27 @@ Text Domain: tu-tema
   align-items: center;
   justify-content: center;
 }
+
+.pagination-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pagination-links .page-numbers {
+  display: flex;
+  width: 2.5rem;
+  height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  line-height: normal;
+  color: #0e141b;
+}
+
+.pagination-links .current {
+  background-color: #e7edf3;
+  font-weight: 700;
+  letter-spacing: 0.015em;
+}
