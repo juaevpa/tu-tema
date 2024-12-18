@@ -107,7 +107,7 @@
         <button onclick="toggleChatAssistant()" 
                 class="flex items-center gap-2 bg-[#1979e6] text-white rounded-full px-4 py-3 shadow-lg hover:bg-[#1565c0] transition-colors">
             <i class="ph ph-chat-dots text-xl"></i>
-            <span class="text-sm font-medium">¿Necesitas ayuda?</span>
+            <span class="text-sm font-medium">¿Quieres hablar con un local?</span>
         </button>
 
         <!-- Modal del chat -->
@@ -134,5 +134,8 @@
     </div>
 
     <?php wp_footer(); ?>
+    <script>
+        const chatAssistantNonce = '<?php echo wp_create_nonce('chat_assistant_nonce'); ?>';
+    </script>
 </body>
 </html> 

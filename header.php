@@ -35,23 +35,24 @@
                         </button>
                         
                         <div id="menu-items" class="hidden md:flex items-center gap-9 absolute md:relative left-0 right-0 top-full md:top-auto bg-white md:bg-transparent p-4 md:p-0 border-b border-[#e7edf3] md:border-0 flex-col md:flex-row">
-                            <a class="text-[#0e141b] text-sm font-medium leading-normal" href="<?php echo get_post_type_archive_link('xativa_route'); ?>">
-                                <i class="ph ph-map-trifold mr-1"></i>Rutas
+                        <a class="text-[#0e141b] text-sm font-medium leading-normal" href="<?php echo get_permalink(33); ?>">
+                                Sobre nosotros
+                            </a> 
+                          <a class="text-[#0e141b] text-sm font-medium leading-normal" href="<?php echo get_post_type_archive_link('xativa_route'); ?>">
+                              Rutas
                             </a>
                             <a class="text-[#0e141b] text-sm font-medium leading-normal" href="<?php echo get_permalink(get_option('page_for_posts')); ?>">
-                                <i class="ph ph-article mr-1"></i>Blog
+                                Blog
                             </a>
-                            <a class="text-[#0e141b] text-sm font-medium leading-normal" href="<?php echo get_permalink(33); ?>">
-                                Sobre nosotros
-                            </a>
+                           
                             <a class="text-[#0e141b] text-sm font-medium leading-normal" href="<?php echo get_post_type_archive_link('xativa_explore'); ?>">
-                                <i class="ph ph-compass mr-1"></i>Explorar
+                                Explorar
                             </a>
                             <a class="text-[#0e141b] text-sm font-medium leading-normal" href="<?php echo get_post_type_archive_link('xativa_restaurant'); ?>">
-                                <i class="ph ph-fork-knife mr-1"></i>Restaurantes
+                               Restaurantes
                             </a>
                             <a class="text-[#0e141b] text-sm font-medium leading-normal" href="<?php echo get_post_type_archive_link('xativa_hotel'); ?>">
-                                <i class="ph ph-bed mr-1"></i>Alojamiento
+                                Alojamiento
                             </a>
                         </div>
                     </nav>

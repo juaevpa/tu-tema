@@ -7,15 +7,20 @@
 
 // Cargar todos los archivos de funcionalidad
 $includes = [
+    'setup.php',          // Configuración básica del tema
     'post-types.php',     // Custom Post Types
     'taxonomies.php',     // Taxonomías
-    'scripts.php',        // Scripts y estilos
-    'theme-support.php',  // Soporte del tema
+    'assets.php',         // Scripts, estilos y recursos
     'acf.php',           // Configuración de ACF
     'admin.php',         // Funciones de administración
-    'helpers.php'        // Funciones auxiliares
+    'helpers.php',       // Funciones auxiliares
+    'meta-boxes.php',    // Custom Meta Boxes
+    'maps.php',          // Configuración de mapas
 ];
 
 foreach ($includes as $file) {
-    require_once get_template_directory() . '/includes/' . $file;
+    $file_path = get_template_directory() . '/includes/' . $file;
+    if (file_exists($file_path)) {
+        require_once $file_path;
+    }
 }
