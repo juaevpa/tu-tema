@@ -1,8 +1,11 @@
 <?php
 /**
  * Configuración y funciones relacionadas con mapas
+ *
+ * @package Tu_Tema
  */
 
+// Configuración por defecto del mapa
 function get_default_map_coordinates() {
     return [
         'lat' => 38.9889,
@@ -11,6 +14,7 @@ function get_default_map_coordinates() {
     ];
 }
 
+// Cargar recursos necesarios para los mapas
 function enqueue_map_resources() {
     // Array de páginas donde necesitamos mapas
     $map_pages = array(
@@ -32,6 +36,7 @@ function enqueue_map_resources() {
     if ($load_maps) {
         wp_deregister_script('xativa-maps'); // Desregistrar cualquier versión anterior
         
+        // Cargar CSS de Leaflet
         wp_enqueue_style(
             'leaflet-css',
             'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css',
@@ -39,6 +44,7 @@ function enqueue_map_resources() {
             '1.9.4'
         );
         
+        // Cargar JavaScript de Leaflet
         wp_enqueue_script(
             'leaflet-js',
             'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js',
@@ -46,8 +52,14 @@ function enqueue_map_resources() {
             '1.9.4',
             true
         );
-    }
-}
-add_action('wp_enqueue_scripts', 'enqueue_map_resources');
 
-// Otras funciones relacionadas con mapas... 
+        // Cargar nuestro script personalizado para mapas
+        wp_enqueue_script(
+            'xativa-maps',
+            THEME_URI . '/assets/js/maps.js',
+            array('leaflet-js'),
+            '1.0.0',
+            true
+        );
+    }
+} 

@@ -46,14 +46,9 @@ function estilos_plantilla_actual() {
         ?>
         <style>
             #wp-admin-bar-plantilla-actual {
-                background: #1979e6 !important;
-            }
-            #wp-admin-bar-plantilla-actual .ab-item {
-                color: white !important;
-            }
+                background: #
         </style>
         <?php
     }
 }
-add_action('wp_head', 'estilos_plantilla_actual');
-
+add_action('admin_head', 'estilos_plantilla_actual'); 

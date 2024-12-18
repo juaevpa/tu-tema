@@ -9,8 +9,10 @@ get_header();
 
 while (have_posts()) :
     the_post();
+    
     $lat = get_post_meta(get_the_ID(), 'latitude', true);
     $lng = get_post_meta(get_the_ID(), 'longitude', true);
+    $rating = get_post_meta(get_the_ID(), 'rating', true);
     ?>
 
     <div class="max-w-7xl mx-auto px-4 py-8">
@@ -20,8 +22,74 @@ while (have_posts()) :
                 <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
                     <h1 class="text-3xl font-bold mb-4"><?php the_title(); ?></h1>
                     <?php the_content(); ?>
+                    <?php if ($rating) : ?>
+                        <div class="flex items-center gap-1 mt-4">
+                            <div class="flex items-center gap-1">
+                                <?php for ($i = 1; $i <= 5; $i++) : ?>
+                                    <?php if ($i <= $rating) : ?>
+                                        <i class="ph ph-star-fill text-yellow-400"></i>
+                                    <?php else : ?>
+                                        <i class="ph ph-star text-gray-300"></i>
+                                    <?php endif; ?>
+                                <?php endfor; ?>
+                            </div>
+                            <span class="text-sm text-gray-600">(<?php echo esc_html($rating); ?>/5)</span>
+                        </div>
+                        <?php
+                $tipos_hotel = get_the_terms(get_the_ID(), 'hotel_category');
+                $servicios_ciclistas = get_the_terms(get_the_ID(), 'hotel_bike_services');
+                $rango_precios = get_the_terms(get_the_ID(), 'hotel_price_range');
+                ?>
+
+                <?php if ($tipos_hotel && !is_wp_error($tipos_hotel) || $servicios_ciclistas && !is_wp_error($servicios_ciclistas) || $rango_precios && !is_wp_error($rango_precios)) : ?>
+                    
+                        <div class="space-y-6 mt-5">
+                            <?php if ($tipos_hotel && !is_wp_error($tipos_hotel)) : ?>
+                                <div>
+                                    <h2 class="text-2xl font-semibold mb-3"><?php _e('Categoría', 'tu-tema'); ?></h2>
+                                    <div class="flex flex-wrap gap-2">
+                                        <?php foreach ($tipos_hotel as $tipo) : ?>
+                                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
+                                                <?php echo esc_html($tipo->name); ?>
+                                            </span>
+                                        <?php endforeach; ?>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php /* if ($rango_precios && !is_wp_error($rango_precios)) : ?>
+                                <div>
+                                    <h2 class="text-2xl font-semibold mb-3"><?php _e('Rango de Precios', 'tu-tema'); ?></h2>
+                                    <div class="flex flex-wrap gap-2">
+                                        <?php foreach ($rango_precios as $precio) : ?>
+                                            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">
+                                                <?php echo esc_html($precio->name); ?>
+                                            </span>
+                                        <?php endforeach; ?>
+                                    </div>
+                                </div>
+                            <?php endif; */ ?>
+
+                            <?php if ($servicios_ciclistas && !is_wp_error($servicios_ciclistas)) : ?>
+                                <div>
+                                    <h2 class="text-2xl font-semibold mb-3"><?php _e('Servicios Ciclistas', 'tu-tema'); ?></h2>
+                                    <div class="flex flex-wrap gap-2">
+                                        <?php foreach ($servicios_ciclistas as $servicio) : ?>
+                                            <span class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm">
+                                                <?php echo esc_html($servicio->name); ?>
+                                            </span>
+                                        <?php endforeach; ?>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                  
+                <?php endif; ?>
+                    <?php endif; ?>
                 </div>
 
+                
+                
                 <?php 
                 $gallery = get_post_meta(get_the_ID(), 'hotel_gallery', true);
                 if (!empty($gallery)): ?>
@@ -42,6 +110,7 @@ while (have_posts()) :
                         </div>
                     </div>
                 <?php endif; ?>
+
             </div>
 
             <!-- Barra lateral -->
@@ -92,6 +161,8 @@ while (have_posts()) :
                                 </div>
                             </div>
                         <?php endif; ?>
+
+                       
                     </div>
                 </div>
 
@@ -102,6 +173,48 @@ while (have_posts()) :
                         <div id="map-<?php echo get_the_ID(); ?>" style="height: 300px;" class="rounded-lg"></div>
                     </div>
                 </div>
+
+                <script>
+                function initMap<?php echo get_the_ID(); ?>() {
+                    const mapContainer = document.getElementById('map-<?php echo get_the_ID(); ?>');
+                    const lat = parseFloat('<?php echo esc_js($lat); ?>');
+                    const lng = parseFloat('<?php echo esc_js($lng); ?>');
+                    
+                    if (!mapContainer || typeof L === 'undefined') {
+                        console.error('Leaflet no está disponible o el contenedor del mapa no existe');
+                        return;
+                    }
+
+                    const map = L.map(mapContainer).setView([lat, lng], 15);
+                    
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        attribution: '© OpenStreetMap contributors'
+                    }).addTo(map);
+
+                    L.marker([lat, lng])
+                        .addTo(map)
+                        .bindPopup(`
+                            <div class="p-3">
+                                <h3 class="font-bold text-lg mb-2"><?php echo esc_js(get_the_title()); ?></h3>
+                                <?php if ($address): ?>
+                                    <p class="text-sm text-[#4e7097] mb-2"><?php echo esc_js($address); ?></p>
+                                <?php endif; ?>
+                            </div>
+                        `);
+                }
+
+                // Intentar inicializar el mapa cuando Leaflet esté disponible
+                if (typeof L !== 'undefined') {
+                    initMap<?php echo get_the_ID(); ?>();
+                } else {
+                    // Esperar a que Leaflet se cargue
+                    window.addEventListener('load', function() {
+                        if (typeof L !== 'undefined') {
+                            initMap<?php echo get_the_ID(); ?>();
+                        }
+                    });
+                }
+                </script>
                 <?php endif; ?>
 
                 <?php

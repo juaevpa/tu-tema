@@ -16,15 +16,10 @@ function enqueue_theme_assets() {
     wp_enqueue_script('chat-assistant', get_template_directory_uri() . '/assets/js/chat-assistant.js', array('ajax-vars'), '1.0', true);
     
     // Leaflet (solo en páginas necesarias)
-    if (is_post_type_archive('xativa_restaurant') || is_post_type_archive('xativa_hotel')) {
+   // if (is_post_type_archive('xativa_restaurant') || is_post_type_archive('xativa_hotel')) {
         wp_enqueue_style('leaflet-css', 'https://unpkg.com/leaflet@1.7.1/dist/leaflet.css', [], '1.7.1');
         wp_enqueue_script('leaflet-js', 'https://unpkg.com/leaflet@1.7.1/dist/leaflet.js', [], '1.7.1', true);
-    }
+    //}
+    
 }
-add_action('wp_enqueue_scripts', 'enqueue_theme_assets');
-
-// Ya no necesitamos esta función porque ajaxurl se maneja arriba
-// function add_ajax_url() {
-//     echo '<script>var ajaxurl = "' . admin_url('admin-ajax.php') . '";</script>';
-// }
-// add_action('wp_head', 'add_ajax_url'); 
+add_action('wp_enqueue_scripts', 'enqueue_theme_assets'); 

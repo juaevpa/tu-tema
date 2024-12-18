@@ -5,137 +5,227 @@
  * @package Tu_Tema
  */
 
-get_header(); ?>
+get_header();
 
-<article id="post-<?php the_ID(); ?>" <?php post_class('max-w-7xl mx-auto px-4 py-8'); ?>>
-    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-        <header class="mb-8">
-            <h1 class="text-4xl font-bold text-gray-900 mb-4"><?php the_title(); ?></h1>
-            
-            <?php
-            // Mostrar categorías del restaurante
-            $categories = get_the_terms(get_the_ID(), 'restaurant_category');
-            if ($categories && !is_wp_error($categories)) : ?>
-                <div class="mb-4">
-                    <?php foreach ($categories as $category) : ?>
-                        <span class="inline-block bg-gray-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
-                            <?php echo esc_html($category->name); ?>
-                        </span>
-                    <?php endforeach; ?>
-                </div>
-            <?php endif; ?>
-        </header>
+while (have_posts()) :
+    the_post();
+    
+    // DEBUG
+    $additional_photos = get_post_meta(get_the_ID(), 'additional_photos', true);
+    $google_reviews = get_post_meta(get_the_ID(), 'google_reviews', true);
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div class="restaurant-gallery">
-                <?php if (has_post_thumbnail()) : ?>
-                    <div class="mb-4 rounded-lg overflow-hidden">
-                        <?php the_post_thumbnail('large', array('class' => 'w-full h-auto')); ?>
-                    </div>
-                <?php endif; ?>
-                
-                <?php
-                // Aquí puedes añadir más imágenes si usas un campo personalizado para galería
-                ?>
-            </div>
+    $lat = get_post_meta(get_the_ID(), 'latitude', true);
+    $lng = get_post_meta(get_the_ID(), 'longitude', true);
+    ?>
 
-            <div class="restaurant-info">
-                <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
-                    <h2 class="text-2xl font-semibold mb-4"><?php _e('Información del Restaurante', 'tu-tema'); ?></h2>
+    <div class="max-w-7xl mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Columna principal -->
+            <div class="md:col-span-2">
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                    <h1 class="text-3xl font-bold mb-4"><?php the_title(); ?></h1>
                     
-                    <?php
-                    // Aquí puedes añadir campos personalizados como:
-                    // - Dirección
-                    // - Teléfono
-                    // - Email
-                    // - Sitio web
-                    // - Horario de apertura
-                    // - Tipo de cocina
-                    // - Rango de precios
-                    // etc.
+                    <!-- Imagen destacada -->
+                    <?php if (has_post_thumbnail()): 
+                        $full_image_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
                     ?>
-                    
-                    <div class="prose max-w-none">
-                        <?php the_content(); ?>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
-                    <h2 class="text-2xl font-semibold mb-4"><?php _e('Menú', 'tu-tema'); ?></h2>
-                    <?php
-                    // Aquí puedes añadir información del menú si usas campos personalizados
-                    ?>
-                </div>
-
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h2 class="text-2xl font-semibold mb-4"><?php _e('Ubicación', 'tu-tema'); ?></h2>
-                    <?php
-                    // Aquí puedes añadir un mapa si usas un campo personalizado para la ubicación
-                    ?>
-                </div>
-            </div>
-        </div>
-
-        <div class="mt-8">
-            <h2 class="text-2xl font-semibold mb-4"><?php _e('Restaurantes Relacionados', 'tu-tema'); ?></h2>
-            <?php
-            // Consulta para restaurantes relacionados
-            $related_args = array(
-                'post_type' => 'xativa_restaurant',
-                'posts_per_page' => 3,
-                'post__not_in' => array(get_the_ID()),
-                'orderby' => 'rand'
-            );
-
-            $related_query = new WP_Query($related_args);
-
-            if ($related_query->have_posts()) : ?>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <?php while ($related_query->have_posts()) : $related_query->the_post(); ?>
-                        <article class="bg-white rounded-lg shadow-lg overflow-hidden">
-                            <?php if (has_post_thumbnail()) : ?>
-                                <div class="aspect-w-16 aspect-h-9">
-                                    <?php the_post_thumbnail('medium', array('class' => 'w-full h-full object-cover')); ?>
+                        <div class="mb-6">
+                            <button onclick="document.getElementById('imageModal').classList.remove('hidden')" 
+                                    class="w-full block aspect-[16/9] overflow-hidden rounded-lg group cursor-pointer relative">
+                                <?php the_post_thumbnail('large', array(
+                                    'class' => 'w-full h-full object-cover transition-transform duration-300 group-hover:scale-105'
+                                )); ?>
+                                <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
+                                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <i class="ph ph-magnifying-glass-plus text-white text-4xl"></i>
                                 </div>
-                            <?php endif; ?>
-                            
-                            <div class="p-4">
-                                <h3 class="text-xl font-semibold mb-2">
-                                    <a href="<?php the_permalink(); ?>" class="text-gray-900 hover:text-primary">
-                                        <?php the_title(); ?>
-                                    </a>
-                                </h3>
-                                <div class="text-gray-600">
-                                    <?php echo wp_trim_words(get_the_excerpt(), 15); ?>
+                            </button>
+                        </div>
+
+                        <!-- Modal imagen destacada -->
+                        <div id="imageModal" class="hidden fixed inset-0 z-50 bg-black bg-opacity-75 flex items-center justify-center p-4">
+                            <div class="relative max-w-7xl w-full">
+                                <button onclick="document.getElementById('imageModal').classList.add('hidden')" 
+                                        class="absolute -top-10 right-0 text-white hover:text-gray-300">
+                                    <i class="ph ph-x text-3xl"></i>
+                                </button>
+                                <img src="<?php echo esc_url($full_image_url); ?>" 
+                                     alt="<?php echo esc_attr(get_the_title()); ?>" 
+                                     class="w-full h-auto">
+                            </div>
+                        </div>
+                    <?php endif; ?>
+
+                    <!-- Rating y Precio -->
+                    <div class="flex items-center gap-6 mb-6">
+                        <?php 
+                        $rating = get_post_meta(get_the_ID(), 'rating', true);
+                        $price_level = get_post_meta(get_the_ID(), 'price_level', true);
+                        ?>
+                        <?php if ($rating): ?>
+                            <div class="flex items-center gap-2">
+                                <span class="text-[#4e7097] font-medium">Valoración:</span>
+                                <div class="flex text-yellow-400">
+                                    <?php 
+                                    for ($i = 1; $i <= 5; $i++) {
+                                        echo '<i class="ph ' . ($i <= $rating ? 'ph-star-fill' : 'ph-star') . '"></i>';
+                                    }
+                                    ?>
+                                </div>
+                                <span class="text-[#4e7097]">(<?php echo esc_html($rating); ?>/5)</span>
+                            </div>
+                        <?php endif; ?>
+                        
+                        <?php if ($price_level): ?>
+                            <div class="flex items-center gap-2">
+                                <span class="text-[#4e7097] font-medium">Precio:</span>
+                                <span class="text-[#4e7097]"><?php echo str_repeat('€', intval($price_level)); ?></span>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+
+                    <?php the_content(); ?>
+
+                    
+
+                    <!-- Reseñas de Google -->
+                    <?php 
+                    $google_reviews = get_post_meta(get_the_ID(), 'google_reviews', true);
+                    if (!empty($google_reviews)): 
+                        // Si es una string, deserialízala
+                        if (is_string($google_reviews)) {
+                            $reviews = maybe_unserialize($google_reviews);
+                        } else {
+                            $reviews = $google_reviews;
+                        }
+                        
+                        if (is_array($reviews)): 
+                    ?>
+                        <div class="mt-8">
+                            <h2 class="text-2xl font-semibold mb-4"><?php _e('Reseñas de Google', 'tu-tema'); ?></h2>
+                            <div class="space-y-6">
+                                <?php foreach ($reviews as $review): ?>
+                                    <div class="border-b border-gray-200 last:border-0 pb-6 last:pb-0">
+                                        <div class="flex items-center gap-3 mb-2">
+                                            <?php if (!empty($review['profile_photo'])): ?>
+                                                <img src="<?php echo esc_url($review['profile_photo']); ?>" 
+                                                     alt="<?php echo esc_attr($review['author']); ?>"
+                                                     class="w-10 h-10 rounded-full">
+                                            <?php endif; ?>
+                                            <div>
+                                                <p class="font-medium text-[#0e141b]"><?php echo esc_html($review['author']); ?></p>
+                                                <div class="flex items-center gap-1 text-yellow-400">
+                                                    <?php 
+                                                    for ($i = 1; $i <= 5; $i++) {
+                                                        echo '<i class="ph ' . ($i <= $review['rating'] ? 'ph-star-fill' : 'ph-star') . '"></i>';
+                                                    }
+                                                    ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="text-[#4e7097]"><?php echo esc_html($review['text']); ?></p>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                    <?php 
+                        endif;
+                    endif; 
+                    ?>
+                </div>
+            </div>
+
+            <!-- Barra lateral -->
+            <div class="md:col-span-1">
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                    <h2 class="text-2xl font-semibold mb-4"><?php _e('Información de contacto', 'tu-tema'); ?></h2>
+                    
+                    <div class="space-y-4">
+                        <?php 
+                        $address = get_post_meta($post->ID, 'address', true);
+                        $phone = get_post_meta($post->ID, 'phone', true);
+                        $website = get_post_meta($post->ID, 'website', true);
+                        ?>
+
+                        <?php if ($address): ?>
+                            <div class="flex items-start gap-3">
+                                <i class="ph ph-map-pin text-xl text-[#4e7097]"></i>
+                                <div>
+                                    <strong class="block text-[#0e141b] mb-1"><?php _e('Dirección:', 'tu-tema'); ?></strong>
+                                    <p class="text-[#4e7097]"><?php echo esc_html($address); ?></p>
                                 </div>
                             </div>
-                        </article>
-                    <?php endwhile; ?>
+                        <?php endif; ?>
+
+                        <?php if ($phone): ?>
+                            <div class="flex items-start gap-3">
+                                <i class="ph ph-phone text-xl text-[#4e7097]"></i>
+                                <div>
+                                    <strong class="block text-[#0e141b] mb-1"><?php _e('Teléfono:', 'tu-tema'); ?></strong>
+                                    <a href="tel:<?php echo esc_attr($phone); ?>" 
+                                       class="text-[#1979e6] hover:text-[#1565c0] transition-colors">
+                                        <?php echo esc_html($phone); ?>
+                                    </a>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if ($website): ?>
+                            <div class="flex items-start gap-3">
+                                <i class="ph ph-globe text-xl text-[#4e7097]"></i>
+                                <div>
+                                    <strong class="block text-[#0e141b] mb-1"><?php _e('Web:', 'tu-tema'); ?></strong>
+                                    <a href="<?php echo esc_url($website); ?>" 
+                                       target="_blank" 
+                                       class="text-[#1979e6] hover:text-[#1565c0] transition-colors">
+                                        <?php echo esc_html($website); ?>
+                                    </a>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                    </div>
                 </div>
-                <?php wp_reset_postdata();
-            endif; ?>
+
+                <?php if (!empty($lat) && !empty($lng)): ?>
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h2 class="text-2xl font-semibold mb-4"><?php _e('Ubicación', 'tu-tema'); ?></h2>
+                    <div class="restaurant-map" data-lat="<?php echo esc_attr($lat); ?>" data-lng="<?php echo esc_attr($lng); ?>">
+                        <div id="map-<?php echo get_the_ID(); ?>" style="height: 300px;" class="rounded-lg"></div>
+                    </div>
+                </div>
+
+                <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const mapContainer = document.getElementById('map-<?php echo get_the_ID(); ?>');
+                    const lat = parseFloat('<?php echo esc_js($lat); ?>');
+                    const lng = parseFloat('<?php echo esc_js($lng); ?>');
+                    
+                    if (!mapContainer || typeof L === 'undefined') return;
+
+                    const map = L.map(mapContainer).setView([lat, lng], 15);
+                    
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        attribution: '© OpenStreetMap contributors'
+                    }).addTo(map);
+
+                    L.marker([lat, lng])
+                        .addTo(map)
+                        .bindPopup(`
+                            <div class="p-3">
+                                <h3 class="font-bold text-lg mb-2"><?php echo esc_js(get_the_title()); ?></h3>
+                                <?php if ($address): ?>
+                                    <p class="text-sm text-[#4e7097] mb-2"><?php echo esc_js($address); ?></p>
+                                <?php endif; ?>
+                            </div>
+                        `);
+                });
+                </script>
+                <?php endif; ?>
+            </div>
         </div>
+    </div>
 
-    <?php endwhile; endif; ?>
-</article>
-
-<script>
-function initMaps() {
-    document.querySelectorAll('.google-map').forEach(function(mapDiv) {
-        const lat = parseFloat(mapDiv.dataset.lat);
-        const lng = parseFloat(mapDiv.dataset.lng);
-        
-        const map = new google.maps.Map(mapDiv, {
-            center: { lat, lng },
-            zoom: 15
-        });
-
-        new google.maps.Marker({
-            position: { lat, lng },
-            map: map
-        });
-    });
-}
-</script>
-
-<?php get_footer(); ?> 
+<?php
+endwhile;
+get_footer();
+?> 

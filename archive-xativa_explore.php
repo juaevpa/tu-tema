@@ -15,14 +15,20 @@ $args = array(
     'paged' => $paged,
 );
 
-// Aplicar filtros si existen
-if (!empty($_GET['category'])) {
+// Aplicar filtros de categoría
+if (isset($_GET['category']) && !empty($_GET['category'])) {
+    $categories = is_array($_GET['category']) ? $_GET['category'] : array($_GET['category']);
     $args['tax_query'][] = array(
         'taxonomy' => 'explore_category',
         'field' => 'slug',
-        'terms' => $_GET['category'],
+        'terms' => $categories,
         'operator' => 'IN'
     );
+}
+
+// Aplicar filtro de búsqueda
+if (isset($_GET['s']) && !empty($_GET['s'])) {
+    $args['s'] = sanitize_text_field($_GET['s']);
 }
 
 $explore_query = new WP_Query($args);
@@ -68,74 +74,34 @@ $explore_query = new WP_Query($args);
         </div>
 
         <!-- Filtros -->
-        <form method="get" class="filter-form relative">
+        <div class="filters-section mb-6">
             <h3 class="text-[#0e141b] text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">
                 <?php _e('Filtros', 'tu-tema'); ?>
             </h3>
-            <div class="flex gap-3 p-3">
-                <!-- Categorías -->
-                <?php if (!is_wp_error($categories) && !empty($categories)) : ?>
-                <div class="relative">
-                    <button type="button" class="filter-dropdown-toggle flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#e7edf3] pl-4 pr-2">
-                        <p class="text-[#0e141b] text-sm font-medium leading-normal whitespace-nowrap"><?php _e('Categoría', 'tu-tema'); ?></p>
-                        <div class="text-[#0e141b]">
-                            <i class="ph ph-caret-down text-xl"></i>
-                        </div>
-                    </button>
-                    <div class="filter-dropdown hidden absolute top-full left-0 mt-2 w-48 rounded-xl bg-white shadow-lg z-50">
-                        <div class="py-2">
-                            <?php foreach ($categories as $category) : ?>
-                                <label class="flex items-center px-4 py-2 hover:bg-[#e7edf3] cursor-pointer">
-                                    <input type="checkbox" 
-                                           name="category[]" 
-                                           value="<?php echo esc_attr($category->slug); ?>"
-                                           <?php checked(isset($_GET['category']) && in_array($category->slug, (array)$_GET['category'])); ?>>
-                                    <span class="ml-2"><?php echo esc_html($category->name); ?></span>
-                                </label>
-                            <?php endforeach; ?>
-                        </div>
-                    </div>
-                </div>
-                <?php endif; ?>
+            <div class="flex flex-wrap gap-3 p-3" id="categoryFilters">
+                <?php if (!is_wp_error($categories) && !empty($categories)) : 
+                    foreach ($categories as $category) : ?>
+                        <button type="button" 
+                                data-category="<?php echo esc_attr($category->slug); ?>"
+                                class="filter-button flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#e7edf3] px-4 hover:bg-[#d0dbe7] transition-colors <?php echo (isset($_GET['category']) && in_array($category->slug, (array)$_GET['category'])) ? 'active bg-[#1979e6] text-white hover:bg-[#1979e6]' : ''; ?>">
+                            <span class="text-sm font-medium leading-normal whitespace-nowrap">
+                                <?php echo esc_html($category->name); ?>
+                            </span>
+                        </button>
+                    <?php endforeach;
+                endif; ?>
             </div>
+        </div>
 
-            <!-- Botones de filtro -->
-            <div class="flex justify-stretch">
-                <div class="flex flex-1 gap-3 flex-wrap px-4 py-3 justify-end">
-                    <button type="reset" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#e7edf3] text-[#0e141b] text-sm font-bold leading-normal tracking-[0.015em]">
-                        <span class="truncate"><?php _e('Resetear filtros', 'tu-tema'); ?></span>
-                    </button>
-                    <button type="submit" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#1979e6] text-slate-50 text-sm font-bold leading-normal tracking-[0.015em]">
-                        <span class="truncate"><?php _e('Aplicar filtros', 'tu-tema'); ?></span>
-                    </button>
-                </div>
+        <!-- Contenedor para los resultados AJAX -->
+        <div id="exploreResults">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
+                <!-- El contenido se cargará aquí -->
             </div>
-        </form>
+        </div>
 
-        <!-- Listado de lugares -->
-        <?php if ($explore_query->have_posts()): ?>
-            <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
-                <?php while ($explore_query->have_posts()): $explore_query->the_post(); 
-                    $categories = get_the_terms(get_the_ID(), 'explore_category');
-                    $category_name = $categories ? $categories[0]->name : '';
-                ?>
-                    <a href="<?php the_permalink(); ?>" class="group flex flex-col gap-3 pb-3 hover:opacity-90 transition-opacity">
-                        <?php if (has_post_thumbnail()): ?>
-                            <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl group-hover:shadow-md transition-shadow"
-                                style="background-image: url('<?php echo get_the_post_thumbnail_url(get_the_ID(), 'medium'); ?>');">
-                            </div>
-                        <?php endif; ?>
-                        <div>
-                            <p class="text-[#0e141b] text-base font-medium leading-normal group-hover:text-[#1979e6] transition-colors"><?php the_title(); ?></p>
-                            <?php if ($category_name): ?>
-                                <p class="text-[#4e7097] text-sm font-normal leading-normal"><?php echo esc_html($category_name); ?></p>
-                            <?php endif; ?>
-                        </div>
-                    </a>
-                <?php endwhile; ?>
-            </div>
-
-            <!-- Paginación -->
+        <!-- Paginación -->
+        <div class="flex justify-center py-8">
             <?php
             echo paginate_links(array(
                 'total' => $explore_query->max_num_pages,
@@ -146,10 +112,63 @@ $explore_query = new WP_Query($args);
                 'class' => 'pagination'
             ));
             ?>
-        <?php else: ?>
-            <p class="text-center py-8"><?php _e('No se encontraron lugares para explorar.', 'tu-tema'); ?></p>
-        <?php endif; wp_reset_postdata(); ?>
+        </div>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('.filter-button');
+    const resultsContainer = document.getElementById('exploreResults');
+    let activeFilters = new Set();
+
+    // Función para cargar los resultados
+    function loadResults() {
+        // Añadir fade out
+        resultsContainer.style.opacity = '0.6';
+        resultsContainer.style.transition = 'opacity 0.2s ease';
+
+        const data = new FormData();
+        data.append('action', 'filter_explore');
+        data.append('categories', Array.from(activeFilters).join(','));
+        data.append('search', '<?php echo esc_js(get_search_query()); ?>');
+
+        fetch('<?php echo admin_url('admin-ajax.php'); ?>', {
+            method: 'POST',
+            body: data
+        })
+        .then(response => response.text())
+        .then(html => {
+            resultsContainer.innerHTML = html;
+            // Restaurar opacidad
+            setTimeout(() => {
+                resultsContainer.style.opacity = '1';
+            }, 50);
+        });
+    }
+
+    // Manejar clicks en los botones de filtro
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const category = this.dataset.category;
+            
+            if (activeFilters.has(category)) {
+                activeFilters.delete(category);
+                this.classList.remove('active', 'bg-[#1979e6]', 'text-white');
+                this.classList.add('bg-[#e7edf3]');
+            } else {
+                activeFilters.add(category);
+                this.classList.add('active', 'bg-[#1979e6]', 'text-white');
+                this.classList.remove('bg-[#e7edf3]');
+            }
+
+            loadResults();
+        });
+    });
+
+    // Cargar resultados iniciales
+    loadResults();
+});
+</script>
 
 <?php get_footer(); ?> 
