@@ -1,64 +1,21 @@
-// Variables globales
+// Estado del chat
 let conversationHistory = [];
-let isWaitingForResponse = false;
 
-// Función para añadir mensajes al chat
-function addMessageToChat(message) {
-  const chatContainer = document.getElementById("chat-messages");
-  const messageDiv = document.createElement("div");
-  messageDiv.className = `flex ${
-    message.type === "user" ? "justify-end" : "justify-start"
-  } mb-4`;
+// Función para alternar la visibilidad del chat
+function toggleChatAssistant() {
+  const chatAssistant = document.getElementById("chat-assistant");
+  chatAssistant.classList.toggle("hidden");
 
-  const messageContent = `
-        <div class="${
-          message.type === "user"
-            ? "bg-[#1979e6] text-white"
-            : "bg-[#e7edf3] text-[#0e141b]"
-        } rounded-xl px-4 py-2 max-w-[80%]">
-            ${message.content}
-            ${message.options ? createOptionsButtons(message.options) : ""}
-        </div>
-    `;
-
-  messageDiv.innerHTML = messageContent;
-  chatContainer.appendChild(messageDiv);
-  chatContainer.scrollTop = chatContainer.scrollHeight;
-}
-
-// Función para crear botones de opciones
-function createOptionsButtons(options) {
-  return `
-        <div class="flex flex-col gap-2 mt-3">
-            ${options
-              .map(
-                (option) => `
-                <button 
-                    onclick="handleUserInput('${option}')"
-                    class="text-left px-3 py-2 rounded-lg bg-white text-[#1979e6] text-sm hover:bg-[#1979e6] hover:text-white transition-colors">
-                    ${option}
-                </button>
-            `
-              )
-              .join("")}
-        </div>
-    `;
-}
-
-// Función para abrir el modal del chat
-function openChatModal() {
-  document.getElementById("chat-modal").classList.remove("hidden");
-  if (conversationHistory.length === 0) {
+  // Si el chat está visible y no hay historial, mostrar mensaje inicial
+  if (
+    !chatAssistant.classList.contains("hidden") &&
+    conversationHistory.length === 0
+  ) {
     addInitialMessage();
   }
 }
 
-// Función para cerrar el modal del chat
-function closeChatModal() {
-  document.getElementById("chat-modal").classList.add("hidden");
-}
-
-// Mensaje inicial cuando se abre el chat
+// Añadir mensaje inicial
 function addInitialMessage() {
   const initialMessage = {
     type: "assistant",
@@ -74,131 +31,92 @@ function addInitialMessage() {
   addMessageToChat(initialMessage);
 }
 
-// Manejar la entrada del usuario
-function handleUserInput(message) {
-  if (isWaitingForResponse) return;
+// Añadir mensaje al chat
+function addMessageToChat(message) {
+  const chatMessages = document.getElementById("chat-messages");
+  const messageElement = document.createElement("div");
 
+  if (message.type === "assistant") {
+    messageElement.className = "flex flex-col gap-4";
+    messageElement.innerHTML = `
+            <div class="flex gap-3 items-start">
+                <div class="w-8 h-8 rounded-full bg-[#1979e6] flex items-center justify-center flex-shrink-0">
+                    <i class="ph ph-user text-white"></i>
+                </div>
+                <div class="flex flex-col gap-2">
+                    <p class="text-[#0e141b]">${message.content}</p>
+                    ${
+                      message.options
+                        ? `
+                        <div class="flex flex-col gap-2">
+                            ${message.options
+                              .map(
+                                (option) => `
+                                <button onclick="handleUserSelection('${option}')" 
+                                        class="text-left px-4 py-2 rounded-lg bg-[#e7edf3] text-[#0e141b] hover:bg-[#d0dbe7] transition-colors">
+                                    ${option}
+                                </button>
+                            `
+                              )
+                              .join("")}
+                        </div>
+                    `
+                        : ""
+                    }
+                </div>
+            </div>
+        `;
+  } else {
+    messageElement.className = "flex justify-end";
+    messageElement.innerHTML = `
+            <div class="max-w-[80%] rounded-lg bg-[#1979e6] px-4 py-2 text-white">
+                ${message.content}
+            </div>
+        `;
+  }
+
+  chatMessages.appendChild(messageElement);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+  conversationHistory.push(message);
+}
+
+// Manejar selección del usuario
+function handleUserSelection(selection) {
+  // Añadir mensaje del usuario
   addMessageToChat({
     type: "user",
-    content: message,
+    content: selection,
   });
 
-  isWaitingForResponse = true;
-  showTypingIndicator();
-
-  // Determinar la categoría basada en el mensaje
-  let category = "";
-  if (message.toLowerCase().includes("historia")) {
-    category = "historia";
-  } else if (
-    message.toLowerCase().includes("gastronomía") ||
-    message.toLowerCase().includes("gastronómicas")
-  ) {
-    category = "gastronomia";
-  } else if (message.toLowerCase().includes("naturaleza")) {
-    category = "naturaleza";
-  } else if (message.toLowerCase().includes("cultura")) {
-    category = "cultura";
-  }
-
-  // Hacer la consulta a WordPress
-  fetch(`/wp-json/wp/v2/xativa_explore?explore_category=${category}`)
-    .then((response) => response.json())
-    .then((data) => {
-      removeTypingIndicator();
-
-      let responseMessage = {
-        type: "assistant",
-        content: formatResponseContent(data),
-        options: [
-          "Quiero saber más",
-          "Buscar otra cosa",
-          "Gracias, eso es todo",
-        ],
-      };
-
-      addMessageToChat(responseMessage);
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-      removeTypingIndicator();
-      addMessageToChat({
-        type: "assistant",
-        content:
-          "Lo siento, ha ocurrido un error. ¿Podrías intentarlo de nuevo?",
-      });
-    })
-    .finally(() => {
-      isWaitingForResponse = false;
+  // Simular respuesta del asistente
+  setTimeout(() => {
+    const response = getResponseForSelection(selection);
+    addMessageToChat({
+      type: "assistant",
+      content: response,
+      options: ["Tengo otra pregunta", "Gracias, eso es todo"],
     });
+  }, 500);
 }
 
-function formatResponseContent(data) {
-  if (!data || !Array.isArray(data) || data.length === 0) {
-    return "Lo siento, no encontré información específica sobre eso. ¿Te gustaría explorar otra área?";
-  }
+// Obtener respuesta según la selección
+function getResponseForSelection(selection) {
+  const responses = {
+    "Quiero conocer la historia de Xàtiva":
+      "Xàtiva tiene una rica historia que se remonta a la época romana. Es especialmente conocida por su castillo medieval y por ser la cuna de la familia Borja. ¿Te gustaría que te recomiende lugares históricos específicos para visitar?",
+    "Busco recomendaciones gastronómicas":
+      "La gastronomía de Xàtiva es muy rica y variada. El arroz al horno es uno de nuestros platos más típicos, y tenemos excelentes restaurantes donde puedes probarlo. ¿Quieres que te recomiende algunos restaurantes?",
+    "Me interesa la naturaleza de la zona":
+      "La zona de Xàtiva está rodeada de hermosos paisajes naturales, perfectos para el ciclismo. Tenemos rutas para todos los niveles. ¿Te gustaría conocer algunas rutas específicas?",
+    "Cuéntame sobre la cultura local":
+      "Xàtiva tiene una vibrante escena cultural, con festivales, museos y tradiciones únicas. La Fira d'Agost es una de nuestras celebraciones más importantes. ¿Quieres saber más sobre algún aspecto en particular?",
+    "Tengo otra pregunta": "¿Sobre qué te gustaría saber más?",
+    "Gracias, eso es todo":
+      "¡De nada! Si necesitas más información, no dudes en preguntarme. ¡Que disfrutes de tu visita a Xàtiva!",
+  };
 
-  let content = '<div class="space-y-4">';
-  content += "<p>He encontrado estos lugares que podrían interesarte:</p>";
-  content += '<div class="grid gap-3">';
-
-  data.forEach((item) => {
-    // Asegurarnos de que item y sus propiedades existen
-    if (!item || !item.title || !item.excerpt) {
-      return;
-    }
-
-    content += `
-      <a href="${
-        item.link || "#"
-      }" class="block bg-white rounded-lg p-3 shadow-sm hover:shadow-md transition-shadow">
-        <div class="flex gap-3">
-          ${
-            item.featured_media_url
-              ? `
-              <div class="w-20 h-20 flex-shrink-0">
-                <img src="${item.featured_media_url}" class="w-full h-full object-cover rounded-lg" alt="${item.title.rendered}">
-              </div>
-              `
-              : ""
-          }
-          <div class="flex-1">
-            <h4 class="font-bold text-[#1979e6]">${
-              item.title.rendered || ""
-            }</h4>
-            <div class="text-sm text-[#4e7097] mt-1">${
-              item.excerpt.rendered || ""
-            }</div>
-          </div>
-        </div>
-      </a>
-    `;
-  });
-
-  content += "</div></div>";
-  return content;
-}
-
-function showTypingIndicator() {
-  const chatContainer = document.getElementById("chat-messages");
-  const typingDiv = document.createElement("div");
-  typingDiv.id = "typing-indicator";
-  typingDiv.className = "flex justify-start mb-4";
-  typingDiv.innerHTML = `
-        <div class="bg-[#e7edf3] text-[#0e141b] rounded-xl px-4 py-2">
-            <div class="flex gap-2">
-                <div class="w-2 h-2 bg-[#4e7097] rounded-full animate-bounce"></div>
-                <div class="w-2 h-2 bg-[#4e7097] rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
-                <div class="w-2 h-2 bg-[#4e7097] rounded-full animate-bounce" style="animation-delay: 0.4s"></div>
-            </div>
-        </div>
-    `;
-  chatContainer.appendChild(typingDiv);
-}
-
-function removeTypingIndicator() {
-  const indicator = document.getElementById("typing-indicator");
-  if (indicator) {
-    indicator.remove();
-  }
+  return (
+    responses[selection] ||
+    "Lo siento, no entendí tu pregunta. ¿Podrías reformularla?"
+  );
 }

@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <div class="px-40 flex flex-1 justify-center py-5">
-    <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+    <div class="layout-content-container flex flex-col  flex-1">
         <?php
         // Obtener el post más reciente
         $featured_post = new WP_Query(array(

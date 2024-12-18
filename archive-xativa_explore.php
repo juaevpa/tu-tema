@@ -29,7 +29,7 @@ $explore_query = new WP_Query($args);
 ?>
 
 <div class="px-40 flex flex-1 justify-center py-5">
-    <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+    <div class="layout-content-container flex flex-col  flex-1">
         <!-- Hero Section -->
         <div class="@container">
             <div class="@[480px]:p-4">

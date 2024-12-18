@@ -19,7 +19,7 @@ get_header(); ?>
 
     <!-- Contenido principal -->
     <div class="px-4 md:px-10 py-5">
-        <div class="mx-auto max-w-4xl">
+        <div class="mx-auto">
             <?php while (have_posts()) : the_post(); ?>
                 <article id="post-<?php the_ID(); ?>" <?php post_class('bg-white rounded-xl p-6 md:p-10 shadow-sm'); ?>>
                     <div class="prose prose-slate max-w-none

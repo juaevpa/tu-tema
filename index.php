@@ -36,7 +36,7 @@ get_header(); ?>
 
     <!-- Contenido principal -->
     <div class="px-4 md:px-10 py-5">
-        <div class="mx-auto max-w-7xl">
+        <div class="mx-auto">
             <?php if (have_posts()) : ?>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <?php while (have_posts()) : the_post(); ?>

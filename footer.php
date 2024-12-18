@@ -15,7 +15,7 @@
                 <div class="flex flex-col gap-4">
                     <a href="<?php echo home_url('/'); ?>" class="flex items-center gap-2 text-[#0e141b]">
                         <i class="ph ph-mountains text-xl"></i>
-                        <span class="text-lg font-bold leading-tight tracking-[-0.015em]">Cycling Xàtiva</span>
+                        <span class="text-lg font-bold leading-tight tracking-[-0.015em]">Paraíso Ciclista</span>
                     </a>
                     <p class="text-[#4e7097] text-sm">
                         Descubre las mejores rutas ciclistas en Xàtiva y sus alrededores. Explora la historia, gastronomía y naturaleza de nuestra región.
@@ -100,6 +100,38 @@
             </div>
         </div>
     </footer>
+
+    <!-- Chat Asistente Flotante -->
+    <div class="fixed bottom-4 right-4 z-50">
+        <!-- Botón del chat -->
+        <button onclick="toggleChatAssistant()" 
+                class="flex items-center gap-2 bg-[#1979e6] text-white rounded-full px-4 py-3 shadow-lg hover:bg-[#1565c0] transition-colors">
+            <i class="ph ph-chat-dots text-xl"></i>
+            <span class="text-sm font-medium">¿Necesitas ayuda?</span>
+        </button>
+
+        <!-- Modal del chat -->
+        <div id="chat-assistant" class="hidden absolute bottom-16 right-0 w-96 bg-white rounded-xl shadow-xl">
+            <div class="border-b border-[#e7edf3] p-4 flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-[#1979e6] flex items-center justify-center">
+                        <i class="ph ph-user text-white"></i>
+                    </div>
+                    <div>
+                        <h2 class="font-bold">Guía Local Virtual</h2>
+                        <p class="text-sm text-[#4e7097]">Siempre disponible para ayudarte</p>
+                    </div>
+                </div>
+                <button onclick="toggleChatAssistant()" class="text-[#4e7097] hover:text-[#1979e6]">
+                    <i class="ph ph-x text-2xl"></i>
+                </button>
+            </div>
+            
+            <div id="chat-messages" class="h-96 overflow-y-auto p-4 space-y-4">
+                <!-- Los mensajes se añadirán aquí dinámicamente -->
+            </div>
+        </div>
+    </div>
 
     <?php wp_footer(); ?>
 </body>

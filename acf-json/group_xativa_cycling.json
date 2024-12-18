@@ -1,90 +1,7 @@
 {
     "key": "group_xativa_cycling",
-    "title": "Configuración Xàtiva Cycling",
+    "title": "Rutas",
     "fields": [
-        {
-            "key": "field_hero_settings",
-            "label": "Configuración del Hero",
-            "name": "",
-            "aria-label": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0,
-            "selected": 0
-        },
-        {
-            "key": "field_hero_image",
-            "label": "Imagen Hero",
-            "name": "hero_image",
-            "aria-label": "",
-            "type": "image",
-            "instructions": "Selecciona la imagen principal para la página de inicio",
-            "required": 1,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "array",
-            "preview_size": "medium",
-            "library": "all",
-            "min_width": 0,
-            "min_height": 0,
-            "min_size": 0,
-            "max_width": 0,
-            "max_height": 0,
-            "max_size": 0,
-            "mime_types": ""
-        },
-        {
-            "key": "field_hero_title",
-            "label": "Título Hero",
-            "name": "hero_title",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "Ingresa el título principal",
-            "required": 1,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "Descubre Xàtiva en Bicicleta",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_hero_subtitle",
-            "label": "Subtítulo Hero",
-            "name": "hero_subtitle",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "Ingresa el subtítulo",
-            "required": 0,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "Explora las mejores rutas ciclistas de la región",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
         {
             "key": "field_route_settings",
             "label": "Configuración de Rutas",
@@ -214,44 +131,6 @@
             "placeholder": ""
         },
         {
-            "key": "field_place_settings",
-            "label": "Configuración de Lugares",
-            "name": "",
-            "aria-label": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0,
-            "selected": 0
-        },
-        {
-            "key": "field_place_address",
-            "label": "Dirección",
-            "name": "address",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "Dirección del lugar",
-            "required": 1,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
             "key": "field_place_hours",
             "label": "Horario",
             "name": "opening_hours",
@@ -341,48 +220,14 @@
                     "parent_repeater": "field_place_hours"
                 }
             ]
-        },
-        {
-            "key": "field_place_featured",
-            "label": "Lugar Destacado",
-            "name": "featured",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "Marcar si este lugar debe aparecer en la página principal",
-            "required": false,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "Mostrar en página principal",
-            "default_value": 0,
-            "ui": 1,
-            "ui_on_text": "",
-            "ui_off_text": ""
         }
     ],
     "location": [
         [
             {
-                "param": "options_page",
-                "operator": "==",
-                "value": "theme-general-settings"
-            }
-        ],
-        [
-            {
                 "param": "post_type",
                 "operator": "==",
                 "value": "xativa_route"
-            }
-        ],
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "xativa_place"
             }
         ]
     ],
@@ -395,5 +240,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1734021719
+    "modified": 1734429213
 }
