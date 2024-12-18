@@ -7,7 +7,7 @@
 
 get_header(); ?>
 
-<div class="container mx-auto px-4 py-8">
+<div class="max-w-7xl mx-auto px-4 py-8">
     <h1 class="text-[#0e141b] text-4xl font-bold mb-8">Hoteles en Xàtiva</h1>
 
     <div class="flex flex-col lg:flex-row gap-8">

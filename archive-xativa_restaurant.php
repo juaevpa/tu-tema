@@ -7,7 +7,7 @@
 
 get_header(); ?>
 
-<div class="container mx-auto px-4 py-8">
+<div class="max-w-7xl mx-auto px-4 py-8">
     <h1 class="text-[#0e141b] text-4xl font-bold mb-8">Restaurantes en Xàtiva</h1>
 
     <div class="flex flex-col lg:flex-row gap-8">
@@ -25,26 +25,31 @@ get_header(); ?>
                         'hide_empty' => false,
                     ));
 
+                    // Botón "Todos"
+                    $is_active = empty($current_category);
+                    ?>
+                    <button 
+                        onclick="filterRestaurants(this)" 
+                        data-category=""
+                        class="filter-btn px-4 py-2 rounded-lg text-sm font-medium <?php echo $is_active ? 'bg-[#1979e6] text-white' : 'bg-[#e7edf3] text-[#0e141b]'; ?>">
+                        Todos
+                    </button>
+
+                    <?php
                     if (!empty($categories) && !is_wp_error($categories)) {
                         foreach ($categories as $category) {
                             $is_active = $current_category === $category->slug;
                             ?>
                             <button 
-                                class="filter-btn px-4 py-2 rounded-lg text-sm font-medium <?php echo $is_active ? 'bg-[#1979e6] text-white' : 'bg-[#e7edf3] text-[#0e141b]'; ?>"
+                                onclick="filterRestaurants(this)" 
                                 data-category="<?php echo esc_attr($category->slug); ?>"
-                                onclick="filterRestaurants(this)">
+                                class="filter-btn px-4 py-2 rounded-lg text-sm font-medium <?php echo $is_active ? 'bg-[#1979e6] text-white' : 'bg-[#e7edf3] text-[#0e141b]'; ?>">
                                 <?php echo esc_html($category->name); ?>
                             </button>
                             <?php
                         }
                     }
                     ?>
-                </div>
-
-                <div class="flex justify-end gap-4">
-                    <button onclick="resetFilters()" class="px-4 py-2 rounded-lg bg-[#e7edf3] text-[#0e141b] text-sm font-medium">
-                        Resetear filtros
-                    </button>
                 </div>
             </div>
 

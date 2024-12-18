@@ -7,7 +7,7 @@
 
 get_header(); ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class('container mx-auto px-4 py-8'); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class('max-w-7xl mx-auto px-4 py-8'); ?>>
     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
         <header class="mb-8">
             <h1 class="text-4xl font-bold text-gray-900 mb-4"><?php the_title(); ?></h1>
