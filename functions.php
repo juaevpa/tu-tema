@@ -29,39 +29,6 @@ require_once THEME_DIR . '/includes/ajax/restaurants.php';   // Filtros restaura
 require_once THEME_DIR . '/includes/ajax/hotels.php';        // Filtros hoteles
 require_once THEME_DIR . '/includes/ajax/chat.php';          // Chat assistant
 
-// Cargar archivos de enriquecimiento de contenido
-require_once THEME_DIR . '/includes/content-enrichment.php';
-
-// Añadir al menú de administración
-function add_photo_update_menu() {
-    add_submenu_page(
-        'edit.php?post_type=xativa_explore',
-        'Actualizar Fotos',
-        'Actualizar Fotos Reales',
-        'manage_options',
-        'update-explore-photos',
-        'render_photo_update_page'
-    );
-}
-add_action('admin_menu', 'add_photo_update_menu');
-
-// Renderizar página de administración
-function render_photo_update_page() {
-    ?>
-    <div class="wrap">
-        <h1>Actualizar Fotos de Lugares</h1>
-        <p>Haz clic en el botón para buscar y actualizar las fotos reales de los lugares.</p>
-        <form method="post">
-            <?php wp_nonce_field('update_explore_photos', 'explore_photos_nonce'); ?>
-            <input type="submit" name="update_photos" class="button button-primary" value="Actualizar Fotos">
-        </form>
-    </div>
-    <?php
-    
-    if (isset($_POST['update_photos']) && check_admin_referer('update_explore_photos', 'explore_photos_nonce')) {
-        add_real_photos_to_explore_places();
-    }
-}
 
 // Agregar función AJAX para filtrar lugares
 function filter_explore_ajax_handler() {
@@ -125,4 +92,3 @@ function filter_explore_ajax_handler() {
 }
 add_action('wp_ajax_filter_explore', 'filter_explore_ajax_handler');
 add_action('wp_ajax_nopriv_filter_explore', 'filter_explore_ajax_handler');
-
